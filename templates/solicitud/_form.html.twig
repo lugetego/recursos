@@ -1,0 +1,198 @@
+{{ form_start(form) }}
+
+<div class="container">
+    <div class="row">
+        <div class="col-4 d-flex justify-content-start align-items-center">
+            <img src="{{asset('images/unam.png') }}" alt="UNAM escudo" class="rounded float-start">
+        </div>
+        <div class="col-4 d-flex justify-content-start align-items-center">
+            <h2>Solicitud de recursos</h2>
+        </div>
+        <div class="col-4 d-flex justify-content-end align-items-center">
+            <img src="{{asset('images/ccm.png') }}" alt="CCM logo" class="rounded">
+        </div>
+    </div>
+
+    <div class="mt-2">
+        <hr>
+        <p class="lead">Una vez capturada la información es necesario imprimir el formato y entregarlo a la Unidad Administrativa.</p>
+    </div>
+
+    <div class="row">
+        <div class="col-3">
+            <div class="form-floating">
+                {{ form_widget(form.tipo, {'attr': {'class': 'form-control','placeholder':'Tipo de la solicitud'}}) }}
+                {{ form_label(form.tipo,'Tipo de la solicitud') }}
+            </div>
+        </div>
+        {# <div class="col-3">
+            <div class="form-floating">
+                {{ form_widget(form.fecha, {'attr': {'class': 'form-control','placeholder':'Fecha de la solicitud'}}) }}
+                {{ form_label(form.fecha,'Fecha de la solicitud') }}
+            </div>
+        </div>#}
+        <div class="col-3">
+            <div class="form-floating">
+                {{ form_widget(form.fuente, {'attr': {'class': 'form-control','placeholder':'Fuente de financiamiento'}}) }}
+                {{ form_label(form.fuente,'Fuente de financiamiento ') }}
+            </div>
+            <div class="invalid-error invalid-feedback">
+                {{ form_errors(form.fuente) }}
+            </div>
+        </div>
+        <div class="col-3">
+            <div class="form-floating" id="proyecto">
+                {{ form_widget(form.proyecto, {'attr': {'class': 'form-control','placeholder':'Número de proyecto'}}) }}
+                {{ form_label(form.proyecto,'Número de proyecto ') }}
+            </div>
+
+        </div>
+        <div class="col-3">
+            <div class="form-floating">
+                {{ form_widget(form.acta, {'attr': {'class': 'form-control','placeholder':'Acta de Consejo Interno'}}) }}
+                {{ form_label(form.acta,'Acta de Consejo Interno') }}
+            </div>
+        </div>
+    </div>
+    <div class="row mt-2">
+        <div class="col-12">
+            <div class="form-floating">
+                {{ form_widget(form.nombre, {'attr': {'class': 'form-control','placeholder':'Nombre del solicitante'}}) }}
+                {{ form_label(form.nombre,'Nombre del solicitante') }}
+            </div>
+            <div class="invalid-error invalid-feedback">
+                {{ form_errors(form.nombre) }}
+            </div>
+        </div>
+    </div>
+    <div class="row mt-2">
+        <div class="col-12">
+            <div class="form-floating">
+                {{ form_widget(form.participante, {'attr': {'class': 'form-control','placeholder':'Nombre de los participantes o visitante'}}) }}
+                {{ form_label(form.nombre,'Nombre(s) del (los) participante(s) o visitante(s)') }}
+            </div>
+        </div>
+    </div>
+    <div class="row mt-2">
+        <div class="col-3">
+            <div class="form-floating">
+                {{ form_widget(form.inicio, {'attr': {'class': 'form-control','placeholder':'Fecha inicial'}}) }}
+                {{ form_label(form.inicio,'Inicio licencia o comisión') }}
+            </div>
+        </div>
+        <div class="col-3">
+            <div class="form-floating">
+                {{ form_widget(form.fin, {'attr': {'class': 'form-control','placeholder':'Fecha final'}}) }}
+                {{ form_label(form.fin,'Fin licencia o comisión') }}
+            </div>
+        </div>
+        <div class="col-6">
+            <label for="nacional" class="form-label">{{ form_label(form.nacional) }}</label>
+            <div>
+                {% for child in form.nacional %}
+                    <div class="form-check form-check-inline">
+                        {{ form_widget(child) }}  {{ form_label(child, null, {'label_attr': {'class': 'form-check-label'}}) }}
+                    </div>
+                {% endfor %}
+            </div>
+            <div class="invalid-error">
+                {{ form_errors(form.nacional) }}
+            </div>
+        </div>
+
+
+        <div class="row mt-2">
+            <div class="col-6">
+                <div class="form-floating">
+                    {{ form_widget(form.lugar, {'attr': {'class': 'form-control','placeholder':'Lugar de la licencia o comisión'}}) }}
+                    {{ form_label(form.lugar,'Lugar de la licencia o comisión') }}
+                </div>
+            </div>
+
+            <div class="col-6">
+                <div class="form-floating">
+                    {{ form_widget(form.motivo, {'attr': {'class': 'form-control','placeholder':'Motivo de la licencia o comisión'}}) }}
+                    {{ form_label(form.motivo,'Motivo de la licencia o comisión') }}
+                </div>
+            </div>
+        </div>
+        <div class="row mt-2">
+            <p class="lead">Capturar el importe solicitado por cada rubro a cubrir</p>
+        </div>
+        <div class="row mt-2">
+            <div class="col-6">
+                <div class="input-group mb-3">
+                    <span class="input-group-text">$</span>
+                    {{ form_widget(form.alimentos, {'attr': {'class': 'form-control','placeholder':'Importe','name':'add'}}) }}
+                    <span class="input-group-text importe">alimentos</span>
+                </div>
+                <div class="invalid-error">
+                    {{ form_errors(form.alimentos) }}
+                </div>
+            </div>
+            <div class="col-6">
+                <div class="input-group mb-3">
+                    <span class="input-group-text">$</span>
+                    {{ form_widget(form.gasolina, {'attr': {'class': 'form-control','placeholder':'Importe'}}) }}
+                    <span class="input-group-text importe">gasolina</span>
+                </div>
+                <div class="invalid-error">
+                    {{ form_errors(form.gasolina) }}
+                </div>
+            </div>
+            <div class="col-6">
+                <div class="input-group mb-3">
+                    <span class="input-group-text">$</span>
+                    {{ form_widget(form.hospedaje, {'attr': {'class': 'form-control','placeholder':'Importe'}}) }}
+                    <span class="input-group-text importe">hospedaje</span>
+                </div>
+                <div class="invalid-error">
+                    {{ form_errors(form.hospedaje) }}
+                </div>
+            </div>
+            <div class="col-6">
+                <div class="input-group mb-3">
+                    <span class="input-group-text">$</span>
+                    {{ form_widget(form.peaje, {'attr': {'class': 'form-control','placeholder':'Importe'}}) }}
+                    <span class="input-group-text importe">peaje</span>
+                </div>
+                <div class="invalid-error">
+                    {{ form_errors(form.peaje) }}
+                </div>
+            </div>
+            <div class="col-6">
+                <div class="input-group mb-3">
+                    <span class="input-group-text">$</span>
+                    {{ form_widget(form.transporte, {'attr': {'class': 'form-control','placeholder':'Importe'}}) }}
+                    <span class="input-group-text importe">transporte terrestre</span>
+                </div>
+                <div class="invalid-error">
+                    {{ form_errors(form.transporte) }}
+                </div>
+            </div>
+
+        </div>
+        <hr>
+        <div class="row mt-2">
+            <div class="col-6">
+                &nbsp;
+            </div>
+
+            <div class="col-6">
+                <div class="input-group mb-3">
+                    <span class="input-group-text">$</span>
+                    {{ form_widget(form.importe, {'attr': {'class': 'form-control','placeholder':'Importe total solicitado', 'readonly': 'true'}}) }}
+                    <span class="input-group-text importe">Total</span>
+                </div>
+                <div class="invalid-error">
+                    {{ form_errors(form.importe) }}
+                </div>
+            </div>
+        </div>
+
+        {{ form_widget(form) }}
+        <div class="d-grid gap-2 pt-3 mb-2 col-3 mx-auto">
+            <button class="btn btn-dark"><i class="fa-regular fa-eye"></i> {{ button_label|default('Vista previa') }}</button>
+        </div>
+
+        {{ form_end(form) }}

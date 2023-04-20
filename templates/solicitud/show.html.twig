@@ -1,0 +1,102 @@
+{% extends 'base.html.twig' %}
+{% block body %}
+    <div class="container">
+        <div class="row">
+            <div class="col-4 d-flex justify-content-start align-items-center">
+                <img src="{{absolute_url(asset('images/unam.png')) }}" alt="UNAM escudo" class="rounded float-start">
+            </div>
+            <div class="col-4 d-flex justify-content-start align-items-center ">
+                <br>
+                <h2>Solicitud de recursos</h2>
+            </div>
+            <div class="col-4 d-flex justify-content-end align-items-center">
+                <br>
+                <img src="{{absolute_url(asset('images/ccm.png')) }}" alt="CCM logo" class="rounded">
+            </div>
+        </div>
+        <div class="mt-2">
+            <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pb-2 mb-1 border-bottom"></div>
+            <div class="col-12 d-flex justify-content-end align-items-center">
+                <a class="btn btn-dark" id="printPageButton" href="{{ path('app_solicitud_pdf',{'id': solicitud.id}) }}" role="button"> <i class="fa-regular fa-file-pdf"></i> Descargar en PDF</a>
+            </div>
+            <div class="card border-0">
+                <div class="card-body">
+                    <h5 class="card-title">{{solicitud.nombre }} </h5>
+                    <h6 class="card-subtitle mb-2 text-muted">Fecha de la solicitud: {{solicitud.fecha|format_datetime('long', 'none', locale='es')  }} </h6>
+                    <p class="card-text">
+                        <strong>Tipo de solicitud:</strong> {{ solicitud.tipo }}<br>
+                        <strong>Fuente de financiamiento:</strong> {{ solicitud.fuente }}<br>
+                        {% if solicitud.proyecto != null %}
+                            <strong>Número de proyecto:</strong> {{ solicitud.proyecto }}<br>
+                        {%endif %}
+                        <strong>Acta del Consejo Interno:</strong> {{ solicitud.acta }}
+                    </p>
+                    <h5 class="card-title">${{solicitud.importe|number_format(2) }} </h5>
+                    <h6 class="card-subtitle mb-2 text-muted">De <em>{{solicitud.inicio|format_datetime('long', 'none', locale='es') }}</em>
+                        a <em>{{solicitud.fin|format_datetime('long', 'none', locale='es') }}</em> </h6>
+                    <p class="card-text">
+                        <strong>Ámbito:</strong> {% if solicitud.nacional == true %}Nacional{% else %}Internacional{%endif %}<br>
+                        <strong>Lugar:</strong> {{ solicitud.lugar }}<br>
+                        <strong>Motivo:</strong> {{ solicitud.motivo }}<br>
+                        <strong>Participantes:</strong> {{ solicitud.participante }}
+                    </p>
+                    <div class="row justify-content-center">
+                        <table class="table table-border w-50 align-items-center" cellspacing="0" >
+                            <tr>
+                                <th scope="col">Alimentos</th>
+                                <td class="text-right">${{ solicitud.alimentos|number_format(2)}}</td>
+                            </tr>
+                            <tbody>
+                            <tr>
+                                <th scope="row">Gasolina</th>
+                                <td class="text-right">${{ solicitud.gasolina|number_format(2)}}</td>
+                            </tr>
+                            <tr>
+                                <th scope="row">Hospedaje</th>
+                                <td class="text-right">${{ solicitud.hospedaje|number_format(2)}}</td>
+
+                            </tr>
+                            <tr>
+                                <th scope="row">Peaje</th>
+                                <td class="text-right">${{ solicitud.peaje|number_format(2)}}</td>
+
+                            <tr>
+                                <th scope="row">Transporte terrestre</th>
+                                <td class="text-right">${{ solicitud.transporte|number_format(2)}}</td>
+
+                            </tr>
+                            <tr class="bg-light">
+                                <th scope="row">Total (MXP)</th>
+                                <td class="text-right ">${{ solicitud.importe|number_format(2)}}</td>
+
+                            </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <br>
+        <br>
+        <div class="row pt-5">
+            <div class="col-5">
+                {{ solicitud.nombre }}
+                <div class="text-center">
+                    <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pb-2 mb-1 border-bottom"></div>
+                    <p class="text-muted small"> Responsable del proyecto (Nombre y firma)</p>
+                </div>
+            </div>
+            <div class="col-2">
+                &nbsp;
+            </div>
+            <div class="col-5">
+                <br>
+                <div class="text-center">
+                    <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pb-2 mb-1 border-bottom"></div>
+                    <p class="text-muted small">Director/Secretario Académico</p>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

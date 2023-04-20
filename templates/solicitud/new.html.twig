@@ -1,0 +1,15 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}New Solicitud{% endblock %}
+
+{% block body %}
+
+    {{ include('solicitud/_form.html.twig') }}
+
+{% endblock %}
+
+{% block javascripts %}
+    {{ parent() }}
+    {{ encore_entry_script_tags('sum') }}
+    {{ encore_entry_script_tags('source') }}
+{% endblock %}

@@ -1,0 +1,63 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Solicitud index{% endblock %}
+
+{% block body %}
+    <h1>Solicitud index</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Fecha</th>
+                <th>Tipo</th>
+                <th>Nombre</th>
+                <th>Acta</th>
+                <th>Importe</th>
+                <th>Inicio</th>
+                <th>Fin</th>
+                <th>Participante</th>
+                <th>Lugar</th>
+                <th>Motivo</th>
+                <th>Gasolina</th>
+                <th>Peaje</th>
+                <th>Hospedaje</th>
+                <th>Alimentos</th>
+                <th>Transporte</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for solicitud in solicituds %}
+            <tr>
+                <td>{{ solicitud.id }}</td>
+                <td>{{ solicitud.fecha ? solicitud.fecha|date('Y-m-d') : '' }}</td>
+                <td>{{ solicitud.tipo }}</td>
+                <td>{{ solicitud.nombre }}</td>
+                <td>{{ solicitud.acta }}</td>
+                <td>{{ solicitud.importe }}</td>
+                <td>{{ solicitud.inicio ? solicitud.inicio|date('Y-m-d') : '' }}</td>
+                <td>{{ solicitud.fin ? solicitud.fin|date('Y-m-d') : '' }}</td>
+                <td>{{ solicitud.participante }}</td>
+                <td>{{ solicitud.lugar }}</td>
+                <td>{{ solicitud.motivo }}</td>
+                <td>{{ solicitud.gasolina }}</td>
+                <td>{{ solicitud.peaje }}</td>
+                <td>{{ solicitud.hospedaje }}</td>
+                <td>{{ solicitud.alimentos }}</td>
+                <td>{{ solicitud.transporte }}</td>
+                <td>
+                    <a href="{{ path('app_solicitud_show', {'id': solicitud.id}) }}">show</a>
+                    <a href="{{ path('app_solicitud_edit', {'id': solicitud.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="17">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_solicitud_new') }}">Create new</a>
+{% endblock %}
