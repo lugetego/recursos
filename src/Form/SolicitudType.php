@@ -23,7 +23,7 @@ class SolicitudType extends AbstractType
                 'choices'  => [
                     'Viáticos'=> 'Viáticos',
                     'Visitante' => 'Visitante',
-                    'Trabajo académico' => 'Trabajo académico',
+                    'Trabajo de campo' => 'Trabajo de campo',
                 ],
                 'placeholder' => 'Seleccionar',
             ])
