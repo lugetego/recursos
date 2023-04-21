@@ -1,8 +1,6 @@
 let fuente = document.getElementById('solicitud_fuente');
 let proyecto= document.getElementById("proyecto");
 
-proyecto.hidden = true;
-
 document.getElementById("solicitud_fuente").addEventListener(
     "change",
     () => {

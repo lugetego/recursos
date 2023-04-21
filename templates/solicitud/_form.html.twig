@@ -45,6 +45,9 @@
                 {{ form_widget(form.proyecto, {'attr': {'class': 'form-control','placeholder':'Número de proyecto'}}) }}
                 {{ form_label(form.proyecto,'Número de proyecto ') }}
             </div>
+            <div class="invalid-error">
+                {{ form_errors(form.proyecto) }}
+            </div>
 
         </div>
         <div class="col-3">

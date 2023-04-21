@@ -69,6 +69,8 @@ class SolicitudType extends AbstractType
             ->add('alimentos')
             ->add('transporte')
         ;
+
+
     }
 
     public function configureOptions(OptionsResolver $resolver): void
