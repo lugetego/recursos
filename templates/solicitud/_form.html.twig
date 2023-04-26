@@ -77,16 +77,26 @@
         </div>
     </div>
     <div class="row mt-2">
-        <div class="col-3">
+        <div class="col-3" id="fecha_inicio">
             <div class="form-floating">
                 {{ form_widget(form.inicio, {'attr': {'class': 'form-control','placeholder':'Fecha inicial'}}) }}
                 {{ form_label(form.inicio,'Inicio licencia o comisión') }}
             </div>
         </div>
-        <div class="col-3">
+        <div class="col-3" id="fecha_fin">
             <div class="form-floating">
                 {{ form_widget(form.fin, {'attr': {'class': 'form-control','placeholder':'Fecha final'}}) }}
                 {{ form_label(form.fin,'Fin licencia o comisión') }}
+            </div>
+        </div>
+        <div class="col-6">
+            <div class="form-floating">
+                <input placeholder="Fecha de inicio y fin de la solicitud" class="form-control" type="text" name="daterange"  />
+                <label for="floatingInputValue">Fecha de inicio y fin de la solicitud</label>
+            </div>
+            <div class="invalid-error">
+                {{ form_errors(form.inicio) }}
+                {{ form_errors(form.fin) }}
             </div>
         </div>
         <div class="col-6">
@@ -102,7 +112,7 @@
                 {{ form_errors(form.nacional) }}
             </div>
         </div>
-
+    </div>
 
         <div class="row mt-2">
             <div class="col-6">

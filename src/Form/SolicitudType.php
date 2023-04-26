@@ -56,9 +56,14 @@ class SolicitudType extends AbstractType
             ->add('importe')
             ->add('inicio',DateType::class, [
                 'widget' => 'single_text',
+                'required'=> false,
+                'data' => new \DateTime(),
             ])
             ->add('fin',DateType::class, [
                 'widget' => 'single_text',
+                'required'=> false,
+                'data' => new \DateTime(),
+
             ])
             ->add('participante')
             ->add('lugar')
