@@ -38,8 +38,12 @@ class SolicitudType extends AbstractType
                 'placeholder' => 'Seleccionar',
             ])
             ->add('nombre')
-            ->add('proyecto')
-            ->add('acta')
+            ->add('proyecto',null,[
+                'required'=> false,
+            ])
+            ->add('acta',null,[
+                'required'=> false,
+            ])
             ->add(
                 'nacional',
                 ChoiceType::class,

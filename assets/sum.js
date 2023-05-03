@@ -5,6 +5,7 @@ let hospedaje = document.getElementById('solicitud_hospedaje');
 let transporte = document.getElementById('solicitud_transporte');
 let peaje = document.getElementById('solicitud_peaje');
 
+
 importe.readOnly = true;
 
 let sum = importe.value = gasolina.value = alimentos.value = hospedaje.value = transporte.value =
@@ -16,5 +17,6 @@ document.addEventListener(
         sum = parseFloat(alimentos.value) + parseFloat(gasolina.value) + parseFloat(transporte.value) + parseFloat(hospedaje.value) + parseFloat(peaje.value);
         importe.value = sum;
 
-
     });
+
+

@@ -83,7 +83,7 @@ class SolicitudController extends AbstractController
 //            return $this->redirectToRoute('app_solicitud_index', [], Response::HTTP_SEE_OTHER);
             return $this->redirectToRoute('app_solicitud_show', [
                 'solicitud' => $solicitud,
-                'id' => $solicitud->getId(),
+                'slug' => $solicitud->getSlug(),
             ]);
         }
 
@@ -94,7 +94,7 @@ class SolicitudController extends AbstractController
     }
 
     /**
-     * @Route("/{id}", name="app_solicitud_show", methods={"GET"})
+     * @Route("/{slug}", name="app_solicitud_show", methods={"GET"})
      */
     public function show(Solicitud $solicitud): Response
     {
@@ -104,7 +104,7 @@ class SolicitudController extends AbstractController
     }
 
     /**
-     * @Route("/{id}/edit", name="app_solicitud_edit", methods={"GET", "POST"})
+     * @Route("/{slug}/edit", name="app_solicitud_edit", methods={"GET", "POST"})
      */
     public function edit(Request $request, Solicitud $solicitud, SolicitudRepository $solicitudRepository): Response
     {

@@ -6,7 +6,7 @@
             <img src="{{asset('images/unam.png') }}" alt="UNAM escudo" class="rounded float-start">
         </div>
         <div class="col-4 d-flex justify-content-start align-items-center">
-            <h2>Solicitud de recursos</h2>
+            <h3>Solicitud de recursos</h3>
         </div>
         <div class="col-4 d-flex justify-content-end align-items-center">
             <img src="{{asset('images/ccm.png') }}" alt="CCM logo" class="rounded">
@@ -89,17 +89,8 @@
                 {{ form_label(form.fin,'Fin licencia o comisión') }}
             </div>
         </div>
-        <div class="col-6">
-            <div class="form-floating">
-                <input placeholder="Fecha de inicio y fin de la solicitud" class="form-control" type="text" name="daterange"  />
-                <label for="floatingInputValue">Fecha de inicio y fin de la solicitud</label>
-            </div>
-            <div class="invalid-error">
-                {{ form_errors(form.inicio) }}
-                {{ form_errors(form.fin) }}
-            </div>
-        </div>
-        <div class="col-6">
+
+        <div class="col-6" id="nacional">
             <label for="nacional" class="form-label">{{ form_label(form.nacional) }}</label>
             <div>
                 {% for child in form.nacional %}
@@ -112,13 +103,23 @@
                 {{ form_errors(form.nacional) }}
             </div>
         </div>
+        <div class="col-6">
+            <div class="form-floating">
+                <input placeholder="Fecha de inicio y fin de la solicitud" class="form-control" type="text" name="daterange"  />
+                <label for="floatingInputValue">Fecha de inicio y fin de la solicitud</label>
+            </div>
+            <div class="invalid-error">
+                {{ form_errors(form.inicio) }}
+                {{ form_errors(form.fin) }}
+            </div>
+        </div>
     </div>
 
         <div class="row mt-2">
             <div class="col-6">
                 <div class="form-floating">
-                    {{ form_widget(form.lugar, {'attr': {'class': 'form-control','placeholder':'Lugar de la licencia o comisión'}}) }}
-                    {{ form_label(form.lugar,'Lugar de la licencia o comisión') }}
+                    {{ form_widget(form.lugar, {'attr': {'class': 'form-control','placeholder':'Lugar donde se realizará la licencia o comisión'}}) }}
+                    {{ form_label(form.lugar,'Lugar donde se realizará la licencia o comisión') }}
                 </div>
             </div>
 
@@ -186,13 +187,15 @@
 
         </div>
         <hr>
-        <div class="row mt-2">
+        <div class="row ">
             <div class="col-6">
-                &nbsp;
+               &nbsp;<p class="small" id="dias"></p>
+                <p class="small" id="maxNac"></p>
+                <p class="small" id="maxInt"></p>
             </div>
 
             <div class="col-6">
-                <div class="input-group mb-3">
+                <div class="input-group mt-5">
                     <span class="input-group-text">$</span>
                     {{ form_widget(form.importe, {'attr': {'class': 'form-control','placeholder':'Importe total solicitado', 'readonly': 'true'}}) }}
                     <span class="input-group-text importe">Total</span>
@@ -204,8 +207,8 @@
         </div>
 
         {{ form_widget(form) }}
-        <div class="d-grid gap-2 pt-3 mb-2 col-3 mx-auto">
-            <button class="btn btn-dark"><i class="fa-regular fa-eye"></i> {{ button_label|default('Vista previa') }}</button>
+        <div class="d-grid gap-2 pt-3 mb-2 col-3 mx-auto" id="envio">
+            <button class="btn btn-dark" ><i class="fa-regular fa-eye"></i> {{ button_label|default('Vista previa') }}</button>
         </div>
 
         {{ form_end(form) }}

@@ -4,6 +4,7 @@ namespace App\Entity;
 
 use App\Repository\SolicitudRepository;
 use Doctrine\ORM\Mapping as ORM;
+use Gedmo\Mapping\Annotation as Gedmo;
 use Symfony\Component\Validator\Constraints as Assert;
 
 
@@ -18,6 +19,12 @@ class Solicitud
      * @ORM\Column(type="integer")
      */
     private $id;
+
+    /**
+     * @ORM\Column(type="string", length=100, unique=true)
+     * @Gedmo\Slug(fields={"nombre","tipo","fecha"}, updatable=false)
+     */
+    private $slug;
 
     /**
      * @ORM\Column(type="date")
@@ -115,11 +122,6 @@ class Solicitud
 
     /**
      * @ORM\Column(type="string", length=255, nullable=true)
-     * @Assert\Expression(
-     *     "not (this.getFuente() in ['Conacyt', 'PAPIME', 'PAPIIT', ] and this.getProyecto()==null)",
-     *     message="Valor requerido"
-     * )
-     * )
      */
     private $proyecto;
 
@@ -136,6 +138,22 @@ class Solicitud
     public function getId(): ?int
     {
         return $this->id;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getSlug()
+    {
+        return $this->slug;
+    }
+
+    /**
+     * @param mixed $slug
+     */
+    public function setSlug($slug): void
+    {
+        $this->slug = $slug;
     }
 
     public function getFecha(): ?\DateTimeInterface

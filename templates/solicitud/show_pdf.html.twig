@@ -116,8 +116,11 @@
                     <strong>Acta del Consejo Interno:</strong> {{ solicitud.acta }}
                 </p>
                 <h5 class="card-title">${{solicitud.importe|number_format(2) }} </h5>
+                {% set difference = date(solicitud.fin|date('Y/m/d')).diff(date(solicitud.inicio|date('Y/m/d'))) %}
+                {% set leftDays = difference.days %}
                 <h6 class="card-subtitle mb-2 text-muted">De <em>{{solicitud.inicio|format_datetime('long', 'none', locale='es') }}</em>
-                    a <em>{{solicitud.fin|format_datetime('long', 'none', locale='es') }}</em> </h6>
+                    a <em>{{solicitud.fin|format_datetime('long', 'none', locale='es') }} <small>(duración de {{ difference.days + 1 }}
+                            {{ difference.days < 1 ? 'día' : difference.days > 1 ? 'días' }})</small></em> </h6>
                 <p class="card-text">
                     <strong>Ámbito:</strong> {% if solicitud.nacional == true %}Nacional{% else %}Internacional{%endif %}<br>
                     <strong>Lugar:</strong> {{ solicitud.lugar }}<br>
