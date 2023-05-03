@@ -38,9 +38,7 @@ class SolicitudType extends AbstractType
                 'placeholder' => 'Seleccionar',
             ])
             ->add('nombre')
-            ->add('proyecto',null,[
-                'required'=> false,
-            ])
+            ->add('proyecto')
             ->add('acta',null,[
                 'required'=> false,
             ])

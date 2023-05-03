@@ -122,6 +122,11 @@ class Solicitud
 
     /**
      * @ORM\Column(type="string", length=255, nullable=true)
+     * @Assert\Expression(
+     *     "not (this.getFuente() in ['Conacyt', 'PAPIME', 'PAPIIT', ] and this.getProyecto()==null)",
+     *     message="Valor requerido"
+     * )
+     * )
      */
     private $proyecto;
 
