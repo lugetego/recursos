@@ -30,7 +30,7 @@ class SolicitudType extends AbstractType
             ->add('fuente', ChoiceType::class, [
                 'choices'  => [
                     'CCM'=> 'CCM',
-                    'Conacyt'=> 'Conacyt',
+                    'Conahcyt'=> 'Conahcyt',
                     'Ingresos extraordinarios'=> 'Ingresos extraordinarios',
                     'PAPIIT'=> 'PAPIIT',
                     'PAPIME'=> 'PAPIME'
