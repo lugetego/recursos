@@ -22,7 +22,7 @@ class Solicitud
 
     /**
      * @ORM\Column(type="string", length=100, unique=true)
-     * @Gedmo\Slug(fields={"nombre","tipo","fecha"}, updatable=false)
+     * @Gedmo\Slug(fields={"solicitante","tipo","fecha"}, updatable=false)
      */
     private $slug;
 
@@ -39,7 +39,7 @@ class Solicitud
     /**
      * @ORM\Column(type="string", length=255)
      */
-    private $nombre;
+    private $solicitante;
 
     /**
      * @ORM\Column(type="string", length=255, nullable=true)
@@ -68,7 +68,12 @@ class Solicitud
     /**
      * @ORM\Column(type="string", length=255)
      */
-    private $participante;
+    private $responsable;
+
+    /**
+     * @ORM\Column(type="string", length=255)
+     */
+    private $institucion;
 
     /**
      * @ORM\Column(type="string", length=255)
@@ -76,9 +81,14 @@ class Solicitud
     private $lugar;
 
     /**
-     * @ORM\Column(type="string", length=255)
+     * @ORM\Column(type="simple_array")
      */
     private $motivo;
+
+    /**
+     * @ORM\Column(type="string", length=255)
+     */
+    private $tipoActividad;
 
     /**
      * @ORM\Column(type="float", nullable=true)
@@ -136,9 +146,9 @@ class Solicitud
     private $fuente;
 
     /**
-     * @ORM\Column(type="boolean")
+     * @ORM\Column(type="simple_array")
      */
-    private $nacional;
+    private $actividad;
 
     public function getId(): ?int
     {
@@ -185,14 +195,14 @@ class Solicitud
         return $this;
     }
 
-    public function getNombre(): ?string
+    public function getSolicitante(): ?string
     {
-        return $this->nombre;
+        return $this->solicitante;
     }
 
-    public function setNombre(string $nombre): self
+    public function setSolicitante(string $solicitante): self
     {
-        $this->nombre = $nombre;
+        $this->solicitante = $solicitante;
 
         return $this;
     }
@@ -225,8 +235,6 @@ class Solicitud
         $this->importe = $importe;
     }
 
-
-
     public function getInicio(): ?\DateTimeInterface
     {
         return $this->inicio;
@@ -251,14 +259,14 @@ class Solicitud
         return $this;
     }
 
-    public function getParticipante(): ?string
+    public function getResponsable(): ?string
     {
-        return $this->participante;
+        return $this->responsable;
     }
 
-    public function setParticipante(string $participante): self
+    public function setResponsable(string $responsable): self
     {
-        $this->participante = $participante;
+        $this->responsable = $responsable;
 
         return $this;
     }
@@ -275,17 +283,23 @@ class Solicitud
         return $this;
     }
 
-    public function getMotivo(): ?string
+    /**
+     * @return mixed
+     */
+    public function getMotivo()
     {
         return $this->motivo;
     }
 
-    public function setMotivo(string $motivo): self
+    /**
+     * @param mixed $motivo
+     */
+    public function setMotivo($motivo): void
     {
         $this->motivo = $motivo;
-
-        return $this;
     }
+
+
 
     public function getGasolina(): ?float
     {
@@ -371,15 +385,56 @@ class Solicitud
         return $this;
     }
 
-    public function isNacional(): ?bool
+    /**
+     * @return mixed
+     */
+    public function getActividad()
     {
-        return $this->nacional;
+        return $this->actividad;
     }
 
-    public function setNacional(bool $nacional): self
+    /**
+     * @param mixed $actividad
+     */
+    public function setActividad($actividad): void
     {
-        $this->nacional = $nacional;
-
-        return $this;
+        $this->actividad = $actividad;
     }
+
+    /**
+     * @return mixed
+     */
+    public function getInstitucion()
+    {
+        return $this->institucion;
+    }
+
+    /**
+     * @param mixed $institucion
+     */
+    public function setInstitucion($institucion): void
+    {
+        $this->institucion = $institucion;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getTipoActividad()
+    {
+        return $this->tipoActividad;
+    }
+
+    /**
+     * @param mixed $tipoActividad
+     */
+    public function setTipoActividad($tipoActividad): void
+    {
+        $this->tipoActividad = $tipoActividad;
+    }
+
+
+
+
+
 }

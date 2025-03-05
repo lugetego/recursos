@@ -37,24 +37,45 @@ class SolicitudType extends AbstractType
                 ],
                 'placeholder' => 'Seleccionar',
             ])
-            ->add('nombre')
+            ->add('solicitante')
             ->add('proyecto')
             ->add('acta',null,[
                 'required'=> false,
             ])
             ->add(
-                'nacional',
+                'motivo',
                 ChoiceType::class,
                 [
                     'choices' => [
-                        'Nacional' => true,
-                        'Internacional' => false,
+                        'Asistencia' => 'Asistencia',
+                        'Participación' => 'Participación',
                     ],
                     'expanded' => true,
-                    'label'=>'Ámbito de la solicitud',
+                    'multiple' => true,
+                    'label'=>'Motivo',
 
                 ]
             )
+            ->add('tipoActividad', ChoiceType::class, [
+                'choices'  => [
+                    'Asesoría Tesis'=>'Asesoría Tesis',
+                    'Coloquio'=> 'Coloquio',
+                    'Conferencia'=> 'Conferencia',
+                    'Congreso'=> 'Congreso',
+                    'Curso'=> 'Curso',
+                    'Distinción Académica'=> 'Distinción Académica',
+                    'Feria'=>'Feria',
+                    'Investigación'=>'Investigación',
+                    'Jornadas'=>'Jornadas',
+                    'Mesa redonda'=>'Mesa redonda',
+                    'Reunión de trabajo'=>'Reunión de trabajo',
+                    'Seminario'=>'Seminario',
+                    'Sinodal'=>'Sinodal',
+                    'Taller'=>'Taller',
+
+                ],
+                'placeholder' => 'Seleccionar',
+            ])
             ->add('importe')
             ->add('inicio',DateType::class, [
                 'widget' => 'single_text',
@@ -67,9 +88,9 @@ class SolicitudType extends AbstractType
                 'data' => new \DateTime(),
 
             ])
-            ->add('participante')
+            ->add('responsable')
+            ->add('institucion')
             ->add('lugar')
-            ->add('motivo')
             ->add('gasolina')
             ->add('peaje')
             ->add('hospedaje')
