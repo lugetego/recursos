@@ -7,8 +7,11 @@ use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\CheckboxType;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\Extension\Core\Type\DateType;
+use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
+use Symfony\Component\Validator\Constraints as Assert;
+
 
 class SolicitudType extends AbstractType
 {
@@ -18,14 +21,8 @@ class SolicitudType extends AbstractType
             ->add('fecha',DateType::class, [
                 'widget' => 'single_text',
                 'data' => new \DateTime(),
-            ])
-            ->add('tipo', ChoiceType::class, [
-                'choices'  => [
-                    'Viáticos'=> 'Viáticos',
-                    'Visitante' => 'Visitante',
-                    'Trabajo de campo' => 'Trabajo de campo',
-                ],
-                'placeholder' => 'Seleccionar',
+                'required' => true,
+
             ])
             ->add('fuente', ChoiceType::class, [
                 'choices'  => [
@@ -38,9 +35,15 @@ class SolicitudType extends AbstractType
                 'placeholder' => 'Seleccionar',
             ])
             ->add('solicitante')
-            ->add('proyecto')
-            ->add('acta',null,[
-                'required'=> false,
+            ->add('responsable')
+            ->add('inicio',DateType::class, [
+                'widget' => 'single_text',
+              //  'data' => new \DateTime(),
+            ])
+            ->add('fin',DateType::class, [
+                'widget' => 'single_text',
+                //  'data' => new \DateTime(),
+                'required'=> true,
             ])
             ->add(
                 'motivo',
@@ -53,49 +56,36 @@ class SolicitudType extends AbstractType
                     'expanded' => true,
                     'multiple' => true,
                     'label'=>'Motivo',
+                    'required' => true,
+                    'constraints' => [
+                        new Assert\Count(['min' => 1, 'minMessage' => 'Seleccionar al menos una opción.']),
+                    ]
 
                 ]
             )
+            ->add('institucion')
+            ->add('lugar')
+
+
             ->add('tipoActividad', ChoiceType::class, [
                 'choices'  => [
-                    'Asesoría Tesis'=>'Asesoría Tesis',
-                    'Coloquio'=> 'Coloquio',
+                    'Asesoría'=>'Asesoría',
                     'Conferencia'=> 'Conferencia',
                     'Congreso'=> 'Congreso',
-                    'Curso'=> 'Curso',
-                    'Distinción Académica'=> 'Distinción Académica',
-                    'Feria'=>'Feria',
-                    'Investigación'=>'Investigación',
-                    'Jornadas'=>'Jornadas',
-                    'Mesa redonda'=>'Mesa redonda',
-                    'Reunión de trabajo'=>'Reunión de trabajo',
-                    'Seminario'=>'Seminario',
-                    'Sinodal'=>'Sinodal',
-                    'Taller'=>'Taller',
-
+                    'Póster'=>'Póster',
+                    'Trabajo de Investigación'=>'Trabajo de Investigación',
                 ],
                 'placeholder' => 'Seleccionar',
             ])
+            ->add('tituloActividad', TextType::class, [
+                'required' => true,  // Makes the field required
+                'label' => 'Título de la actividad', ]) // Optional: Add a label if you need one
             ->add('importe')
-            ->add('inicio',DateType::class, [
-                'widget' => 'single_text',
-                'required'=> false,
-                'data' => new \DateTime(),
-            ])
-            ->add('fin',DateType::class, [
-                'widget' => 'single_text',
-                'required'=> false,
-                'data' => new \DateTime(),
 
-            ])
-            ->add('responsable')
-            ->add('institucion')
-            ->add('lugar')
-            ->add('gasolina')
-            ->add('peaje')
-            ->add('hospedaje')
-            ->add('alimentos')
-            ->add('transporte')
+            ->add('tcCCM')
+            ->add('taCCM')
+            ->add('taProyecto')
+            ->add('tcProyecto')
         ;
 
 

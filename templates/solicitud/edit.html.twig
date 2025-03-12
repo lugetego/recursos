@@ -2,12 +2,31 @@
 
 {% block title %}Edit Solicitud{% endblock %}
 
+{% block stylesheets %}
+    {{ parent() }}
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.css" />
+{% endblock %}
+
+
 {% block body %}
-    <h1>Edit Solicitud</h1>
 
-    {{ include('solicitud/_form.html.twig', {'button_label': 'Update'}) }}
+    {{ include('solicitud/_form.html.twig', {'button_label': 'Modificar'}) }}
 
+{#
     <a href="{{ path('app_solicitud_index') }}">back to list</a>
+#}
 
-    {{ include('solicitud/_delete_form.html.twig') }}
+{#    {{ include('solicitud/_delete_form.html.twig') }}#}
+{% endblock %}
+
+
+{% block javascripts %}
+    {{ parent() }}
+    {{ encore_entry_script_tags('sum') }}
+    {{ encore_entry_script_tags('source') }}
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/jquery/latest/jquery.min.js"></script>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/momentjs/latest/moment.min.js"></script>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.min.js"></script>
+    {{ encore_entry_script_tags('date') }}
+    {{ encore_entry_script_tags('participacion') }}
 {% endblock %}

@@ -32,23 +32,24 @@
             <tr>
                 <td>{{ solicitud.id }}</td>
                 <td>{{ solicitud.fecha ? solicitud.fecha|date('Y-m-d') : '' }}</td>
-                <td>{{ solicitud.tipo }}</td>
-                <td>{{ solicitud.nombre }}</td>
+                <td>{{ solicitud.solicitante }}</td>
                 <td>{{ solicitud.acta }}</td>
                 <td>{{ solicitud.importe }}</td>
                 <td>{{ solicitud.inicio ? solicitud.inicio|date('Y-m-d') : '' }}</td>
                 <td>{{ solicitud.fin ? solicitud.fin|date('Y-m-d') : '' }}</td>
-                <td>{{ solicitud.participante }}</td>
+                <td>{{ solicitud.responsable }}</td>
                 <td>{{ solicitud.lugar }}</td>
-                <td>{{ solicitud.motivo }}</td>
-                <td>{{ solicitud.gasolina }}</td>
-                <td>{{ solicitud.peaje }}</td>
-                <td>{{ solicitud.hospedaje }}</td>
-                <td>{{ solicitud.alimentos }}</td>
-                <td>{{ solicitud.transporte }}</td>
+                <td>{{ solicitud.motivo| length }}</td>
+                <td>{{ solicitud.tcCCM }}</td>
+                <td>{{ solicitud.taCCM }}</td>
+                <td>{{ solicitud.tcProyecto }}</td>
+                <td>{{ solicitud.taProyecto }}</td>
+
+
+
                 <td>
-                    <a href="{{ path('app_solicitud_show', {'id': solicitud.id}) }}">show</a>
-                    <a href="{{ path('app_solicitud_edit', {'id': solicitud.id}) }}">edit</a>
+                    <a href="{{ path('app_solicitud_show', {'slug': solicitud.slug}) }}">show</a>
+                    <a href="{{ path('app_solicitud_edit', {'slug': solicitud.slug}) }}">edit</a>
                 </td>
             </tr>
         {% else %}

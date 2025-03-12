@@ -1,3 +1,4 @@
+/*
 let fuente = document.getElementById('solicitud_fuente');
 let proyecto= document.getElementById("proyecto");
 
@@ -13,6 +14,7 @@ document.getElementById("solicitud_fuente").addEventListener(
     },
     false
 );
+*/
 
 
 

@@ -22,7 +22,7 @@ class Solicitud
 
     /**
      * @ORM\Column(type="string", length=100, unique=true)
-     * @Gedmo\Slug(fields={"solicitante","tipo","fecha"}, updatable=false)
+     * @Gedmo\Slug(fields={"solicitante","fecha"}, updatable=false)
      */
     private $slug;
 
@@ -31,10 +31,6 @@ class Solicitud
      */
     private $fecha;
 
-    /**
-     * @ORM\Column(type="string", length=255)
-     */
-    private $tipo;
 
     /**
      * @ORM\Column(type="string", length=255)
@@ -86,17 +82,14 @@ class Solicitud
     private $motivo;
 
     /**
-     * @ORM\Column(type="string", length=255)
+     * @ORM\Column(type="string", length=255, nullable=true)
      */
     private $tipoActividad;
 
     /**
-     * @ORM\Column(type="float", nullable=true)
-     * @Assert\Type(
-     *     type="float",
-     *     message="The value {{ value }} is not a valid {{ type }}.")
+     * @ORM\Column(type="string", length=1000, nullable=true)
      */
-    private $gasolina;
+    private $tituloActividad;
 
     /**
      * @ORM\Column(type="float", nullable=true)
@@ -104,7 +97,7 @@ class Solicitud
      *     type="float",
      *     message="The value {{ value }} is not a valid {{ type }}.")
      */
-    private $peaje;
+    private $tcCCM;
 
     /**
      * @ORM\Column(type="float", nullable=true)
@@ -112,7 +105,7 @@ class Solicitud
      *     type="float",
      *     message="The value {{ value }} is not a valid {{ type }}.")
      */
-    private $hospedaje;
+    private $taCCM;
 
     /**
      * @ORM\Column(type="float", nullable=true)
@@ -120,7 +113,7 @@ class Solicitud
      *     type="float",
      *     message="The value {{ value }} is not a valid {{ type }}.")
      */
-    private $alimentos;
+    private $taProyecto;
 
     /**
      * @ORM\Column(type="float", nullable=true)
@@ -128,7 +121,9 @@ class Solicitud
      *     type="float",
      *     message="The value {{ value }} is not a valid {{ type }}.")
      */
-    private $transporte;
+    private $tcProyecto;
+
+
 
     /**
      * @ORM\Column(type="string", length=255, nullable=true)
@@ -144,11 +139,6 @@ class Solicitud
      * @ORM\Column(type="string", length=255)
      */
     private $fuente;
-
-    /**
-     * @ORM\Column(type="simple_array")
-     */
-    private $actividad;
 
     public function getId(): ?int
     {
@@ -183,17 +173,6 @@ class Solicitud
         return $this;
     }
 
-    public function getTipo(): ?string
-    {
-        return $this->tipo;
-    }
-
-    public function setTipo(string $tipo): self
-    {
-        $this->tipo = $tipo;
-
-        return $this;
-    }
 
     public function getSolicitante(): ?string
     {
@@ -299,67 +278,56 @@ class Solicitud
         $this->motivo = $motivo;
     }
 
-
-
-    public function getGasolina(): ?float
+    /**
+     * @return mixed
+     */
+    public function getTcCCM()
     {
-        return $this->gasolina;
+        return $this->tcCCM;
     }
 
-    public function setGasolina(float $gasolina): self
+    /**
+     * @param mixed $tcCCM
+     */
+    public function setTcCCM($tcCCM): void
     {
-        $this->gasolina = $gasolina;
-
-        return $this;
+        $this->tcCCM = $tcCCM;
     }
 
-    public function getPeaje(): ?float
+    /**
+     * @return mixed
+     */
+    public function getTaCCM()
     {
-        return $this->peaje;
+        return $this->taCCM;
     }
 
-    public function setPeaje(?float $peaje): self
+    /**
+     * @param mixed $taCCM
+     */
+    public function setTaCCM($taCCM): void
     {
-        $this->peaje = $peaje;
-
-        return $this;
+        $this->taCCM = $taCCM;
     }
 
-    public function getHospedaje(): ?float
+
+
+    /**
+     * @return mixed
+     */
+    public function getTcProyecto()
     {
-        return $this->hospedaje;
+        return $this->tcProyecto;
     }
 
-    public function setHospedaje(?float $hospedaje): self
+    /**
+     * @param mixed $tcProyecto
+     */
+    public function setTcProyecto($tcProyecto): void
     {
-        $this->hospedaje = $hospedaje;
-
-        return $this;
+        $this->tcProyecto = $tcProyecto;
     }
 
-    public function getAlimentos(): ?float
-    {
-        return $this->alimentos;
-    }
-
-    public function setAlimentos(?float $alimentos): self
-    {
-        $this->alimentos = $alimentos;
-
-        return $this;
-    }
-
-    public function getTransporte(): ?float
-    {
-        return $this->transporte;
-    }
-
-    public function setTransporte(?float $transporte): self
-    {
-        $this->transporte = $transporte;
-
-        return $this;
-    }
 
     public function getProyecto(): ?string
     {
@@ -383,22 +351,6 @@ class Solicitud
         $this->fuente = $fuente;
 
         return $this;
-    }
-
-    /**
-     * @return mixed
-     */
-    public function getActividad()
-    {
-        return $this->actividad;
-    }
-
-    /**
-     * @param mixed $actividad
-     */
-    public function setActividad($actividad): void
-    {
-        $this->actividad = $actividad;
     }
 
     /**
@@ -432,6 +384,40 @@ class Solicitud
     {
         $this->tipoActividad = $tipoActividad;
     }
+
+    /**
+     * @return mixed
+     */
+    public function getTituloActividad()
+    {
+        return $this->tituloActividad;
+    }
+
+    /**
+     * @param mixed $tituloActividad
+     */
+    public function setTituloActividad($tituloActividad): void
+    {
+        $this->tituloActividad = $tituloActividad;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getTaProyecto()
+    {
+        return $this->taProyecto;
+    }
+
+    /**
+     * @param mixed $taProyecto
+     */
+    public function setTaProyecto($taProyecto): void
+    {
+        $this->taProyecto = $taProyecto;
+    }
+
+
 
 
 

@@ -1,20 +1,22 @@
-let alimentos = document.getElementById('solicitud_alimentos');
-let gasolina = document.getElementById('solicitud_gasolina');
+let tcProyecto = document.getElementById('solicitud_tcProyecto');
+let tcCCM = document.getElementById('solicitud_tcCCM');
+let taProyecto = document.getElementById('solicitud_taProyecto');
+let taCCM = document.getElementById('solicitud_taCCM');
 let importe = document.getElementById('solicitud_importe');
-let hospedaje = document.getElementById('solicitud_hospedaje');
-let transporte = document.getElementById('solicitud_transporte');
-let peaje = document.getElementById('solicitud_peaje');
+
 
 
 importe.readOnly = true;
 
-let sum = importe.value = gasolina.value = alimentos.value = hospedaje.value = transporte.value =
-    peaje.value= 0;
-
+importe.value = importe.value || 0;
+tcProyecto.value = tcProyecto.value || 0;
+tcCCM.value = tcCCM.value || 0;
+taProyecto.value = taProyecto.value || 0;
+taCCM.value = taCCM.value || 0;
 document.addEventListener(
     "change",
     () => {
-        sum = parseFloat(alimentos.value) + parseFloat(gasolina.value) + parseFloat(transporte.value) + parseFloat(hospedaje.value) + parseFloat(peaje.value);
+        sum = parseFloat(tcProyecto.value) + parseFloat(tcCCM.value) + parseFloat(taProyecto.value) + parseFloat(taCCM.value);
         importe.value = sum;
 
     });

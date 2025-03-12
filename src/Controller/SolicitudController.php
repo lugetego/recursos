@@ -68,6 +68,7 @@ class SolicitudController extends AbstractController
         $solicitud = new Solicitud();
         $form = $this->createForm(SolicitudType::class, $solicitud);
         $form->remove('fecha');
+
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid())
@@ -109,18 +110,29 @@ class SolicitudController extends AbstractController
     public function edit(Request $request, Solicitud $solicitud, SolicitudRepository $solicitudRepository): Response
     {
         $form = $this->createForm(SolicitudType::class, $solicitud);
+        $form->remove('fecha');
+
         $form->handleRequest($request);
 
+
         if ($form->isSubmitted() && $form->isValid()) {
+            $solicitud->setFecha(new \DateTime());
+
             $solicitudRepository->add($solicitud, true);
 
-            return $this->redirectToRoute('app_solicitud_index', [], Response::HTTP_SEE_OTHER);
+           // return $this->redirectToRoute('app_solicitud_index', [], Response::HTTP_SEE_OTHER);
+            return $this->redirectToRoute('app_solicitud_show', [
+                'solicitud' => $solicitud,
+                'slug' => $solicitud->getSlug(),
+            ]);
         }
 
-        return $this->renderForm('solicitud/edit.html.twig', [
+       return $this->renderForm('solicitud/edit.html.twig', [
             'solicitud' => $solicitud,
             'form' => $form,
         ]);
+
+
     }
 
     /**
