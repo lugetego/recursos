@@ -35,8 +35,9 @@ class SolicitudType extends AbstractType
                 'placeholder' => 'Seleccionar',
             ])
             ->add('solicitante')
-            ->add('responsable')
-            ->add('tutor')
+            ->add('responsable', TextType::class, [
+                'required' => false,  // Makes the field required
+                'label' => 'Persona responsable del proyecto', ]) // Optional: Add a label if you need one            ->add('tutor')
 
             ->add('inicio',DateType::class, [
                 'widget' => 'single_text',
