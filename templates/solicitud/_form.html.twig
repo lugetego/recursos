@@ -135,11 +135,13 @@
                     </div>
                 {% endfor %}
             </div>
+            {{ form_errors(form.motivo) }}
 
         </div>
 
         <div class="col-12">
             <div id="daterange-error-msg" class="small"></div>
+            <p class="small text-primary" id="participacion"></p>
 
         </div>
 
