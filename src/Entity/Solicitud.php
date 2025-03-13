@@ -129,17 +129,6 @@ class Solicitud
     private $tcProyecto;
 
 
-
-    /**
-     * @ORM\Column(type="string", length=255, nullable=true)
-     * @Assert\Expression(
-     *     "not (this.getFuente() in ['Conacyt', 'PAPIME', 'PAPIIT', ] and this.getProyecto()==null)",
-     *     message="Valor requerido"
-     * )
-     * )
-     */
-    private $proyecto;
-
     /**
      * @ORM\Column(type="string", length=255)
      */
@@ -333,18 +322,6 @@ class Solicitud
         $this->tcProyecto = $tcProyecto;
     }
 
-
-    public function getProyecto(): ?string
-    {
-        return $this->proyecto;
-    }
-
-    public function setProyecto(?string $proyecto): self
-    {
-        $this->proyecto = $proyecto;
-
-        return $this;
-    }
 
     public function getFuente(): ?string
     {
