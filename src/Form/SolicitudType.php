@@ -21,7 +21,7 @@ class SolicitudType extends AbstractType
             ->add('fecha',DateType::class, [
                 'widget' => 'single_text',
                 'data' => new \DateTime(),
-                'required' => true,
+                'required' => false,
 
             ])
             ->add('fuente', ChoiceType::class, [
