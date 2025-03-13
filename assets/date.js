@@ -103,7 +103,7 @@ document.querySelectorAll('#solicitud_inicio, #solicitud_fin').forEach(input => 
             diffDays = diffDays === 0 ? 1 : diffDays;
 
             console.log("Días de diferencia:", diffDays);
-            document.getElementById("dias").innerText = "Duración: " + diffDays + " días";
+            document.getElementById("dias").innerText = "Duración de la solicitud: " + diffDays + " días";
         }
     });
 });

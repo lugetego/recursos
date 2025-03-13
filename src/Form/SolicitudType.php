@@ -36,6 +36,8 @@ class SolicitudType extends AbstractType
             ])
             ->add('solicitante')
             ->add('responsable')
+            ->add('tutor')
+
             ->add('inicio',DateType::class, [
                 'widget' => 'single_text',
               //  'data' => new \DateTime(),

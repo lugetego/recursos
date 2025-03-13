@@ -41,6 +41,19 @@
                 {{ form_errors(form.fuente) }}
             </div>
         </div>
+
+        <div class="col-9">
+            <div class="form-floating">
+                {{ form_widget(form.responsable, {'attr': {'class': 'form-control','placeholder':'Nombre de la persona responsable del proyectosolicitante'}}) }}
+                {{ form_label(form.responsable,'Persona responsable del proyecto') }}
+            </div>
+
+            <div class="invalid-error invalid-feedback">
+                {{ form_errors(form.solicitante) }}
+            </div>
+
+        </div>
+
         {# <div class="col-3">
             <div class="form-floating" id="proyecto">
                 {{ form_widget(form.proyecto, {'attr': {'class': 'form-control','placeholder':'Número de proyecto'}}) }}
@@ -64,16 +77,19 @@
                 {{ form_widget(form.solicitante, {'attr': {'class': 'form-control','placeholder':'Nombre del solicitante'}}) }}
                 {{ form_label(form.solicitante,'Persona solicitante') }}
             </div>
+
             <div class="invalid-error invalid-feedback">
                 {{ form_errors(form.solicitante) }}
             </div>
+
         </div>
     </div>
     <div class="row mt-2">
         <div class="col-12">
+
             <div class="form-floating">
-                {{ form_widget(form.responsable, {'attr': {'class': 'form-control','placeholder':'Persona Responsable'}}) }}
-                {{ form_label(form.responsable,'Persona responsable') }}
+                {{ form_widget(form.tutor, {'attr': {'class': 'form-control','placeholder':'Nombre del solicitante'}}) }}
+                {{ form_label(form.tutor,'Tutor(a) o Asesor(a)') }}
             </div>
         </div>
     </div>
@@ -86,24 +102,29 @@
     <div class="row mt-2">
 
 
-            <div class="col-3" id="fecha_inicio">
-                <div class="form-floating">
-                    {{ form_widget(form.inicio, {'attr': {'class': 'form-control','placeholder':'Fecha inicial'}}) }}
+        <p class="small text-primary" id="dias"></p>
 
-                    {{ form_label(form.inicio,'Fecha inicio') }}
-                </div>
-                {{ form_errors(form.inicio) }}
+        <div class="col-3" id="fecha_inicio">
+            <div class="form-floating">
+                {{ form_widget(form.inicio, {'attr': {'class': 'form-control','placeholder':'Fecha inicial'}}) }}
 
+                {{ form_label(form.inicio,'Fecha inicio') }}
+            </div>
+            {{ form_errors(form.inicio) }}
+
+
+
+        </div>
+
+        <div class="col-3" id="fecha_fin">
+            <div class="form-floating">
+                {{ form_widget(form.fin, {'attr': {'class': 'form-control','placeholder':'Fecha final'}}) }}
+                {{ form_label(form.fin,'Fecha fin') }}
             </div>
 
-            <div class="col-3" id="fecha_fin">
-                <div class="form-floating">
-                    {{ form_widget(form.fin, {'attr': {'class': 'form-control','placeholder':'Fecha final'}}) }}
-                    {{ form_label(form.fin,'Fecha fin') }}
-                </div>
 
+        </div>
 
-            </div>
 
         <div class="col-6" id="motivo">
             <label for="motivo" class="form-label">{{ form_label(form.motivo) }}</label>
@@ -114,18 +135,15 @@
                     </div>
                 {% endfor %}
             </div>
-            <div class="invalid-error">
-                {{ form_errors(form.motivo) }}
-            </div>
+
         </div>
-        <div id="daterange-error-msg"></div>
 
         <div class="col-12">
-            &nbsp;<p class="small text-primary" id="dias"></p>
+            <div id="daterange-error-msg" class="small"></div>
+
         </div>
 
-
-       {# <div class="col-6" id="daterange-container" >
+        {# <div class="col-6" id="daterange-container" >
             <div class="form-floating">
                 <input placeholder="Fecha de inicio y fin de la solicitud" class="form-control" type="text" name="daterange"  />
                 <label for="floatingInputValue">Fecha de inicio y fin de la solicitud</label>
@@ -144,29 +162,14 @@
 
 
         </div>
-#}
+        #}
 
 
     </div>
 
-
-
     <div class="row mt-2">
+        <p class="small text-primary" id="participacion"></p>
 
-        <div class="col-6">
-            <div class="form-floating">
-                {{ form_widget(form.institucion, {'attr': {'class': 'form-control','placeholder':'Institución en la que se realizará la actividad'}}) }}
-                {{ form_label(form.institucion,'Institución en la que se realizará la actividad') }}
-            </div>
-        </div>
-        <div class="col-6">
-            <div class="form-floating">
-                {{ form_widget(form.lugar, {'attr': {'class': 'form-control','placeholder':'Ciudad y país donde se realizará la actividad'}}) }}
-                {{ form_label(form.lugar,'Ciudad y país donde se realizará la actividad') }}
-            </div>
-        </div>
-    </div>
-    <div class="row mt-2">
         <div class="col-6">
             <div class="form-floating">
                 {{ form_widget(form.tipoActividad, {'attr': {'class': 'form-control','placeholder':'Tipo de actividad'}}) }}
@@ -186,6 +189,25 @@
                 {{ form_label(form.actividad,'Motivo de la licencia o comisión') }}
             </div>
         </div>#}
+    </div>
+
+
+
+
+    <div class="row mt-2">
+
+        <div class="col-6">
+            <div class="form-floating">
+                {{ form_widget(form.institucion, {'attr': {'class': 'form-control','placeholder':'Institución en la que se realizará la actividad'}}) }}
+                {{ form_label(form.institucion,'Institución en la que se realizará la actividad') }}
+            </div>
+        </div>
+        <div class="col-6">
+            <div class="form-floating">
+                {{ form_widget(form.lugar, {'attr': {'class': 'form-control','placeholder':'Ciudad y país donde se realizará la actividad'}}) }}
+                {{ form_label(form.lugar,'Ciudad y país donde se realizará la actividad') }}
+            </div>
+        </div>
     </div>
     <div class="row mt-2">
         <p class="lead">Capturar el importe solicitado por cada rubro a cubrir.</p>

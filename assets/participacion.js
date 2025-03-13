@@ -24,6 +24,9 @@ document.getElementById("solicitud_motivo_1").addEventListener(
             // Enable the elements when participacion is checked
             actividad.disabled = false;
             titulo.disabled = false;
+            document.getElementById("participacion").innerText = "Cuando el motivo seleccionado es 'Participación' " +
+                "debe seleccionar un 'Tipo de actividad' y proporcionar el 'Título de la actividad'";
+
         } else {
             // Disable the elements if participacion is not checked
             actividad.disabled = true;

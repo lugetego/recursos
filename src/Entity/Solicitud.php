@@ -62,9 +62,14 @@ class Solicitud
     private $fin;
 
     /**
-     * @ORM\Column(type="string", length=255)
+     * @ORM\Column(type="string", length=255, nullable=true)
      */
     private $responsable;
+
+    /**
+     * @ORM\Column(type="string", length=255)
+     */
+    private $tutor;
 
     /**
      * @ORM\Column(type="string", length=255)
@@ -415,6 +420,22 @@ class Solicitud
     public function setTaProyecto($taProyecto): void
     {
         $this->taProyecto = $taProyecto;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getTutor()
+    {
+        return $this->tutor;
+    }
+
+    /**
+     * @param mixed $tutor
+     */
+    public function setTutor($tutor): void
+    {
+        $this->tutor = $tutor;
     }
 
 
