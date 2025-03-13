@@ -37,7 +37,11 @@
                         {%endif %}
                         <strong>Tutor(a) o Asesor(a) del solicitante:</strong> {{ solicitud.tutor }}<br>
 
-                        <strong>Persona responsable del proyecto:</strong> {{ solicitud.responsable }}<br>
+                        {% if solicitud.fuente not in ['CCM', 'Ingresos extraordinarios'] %}
+                            <strong>Persona responsable del proyecto:</strong> {{ solicitud.responsable }}<br>
+                        {% endif %}
+
+
                         <strong>Acta del Consejo Interno:</strong> {{ solicitud.acta }}
                     </p>
 
