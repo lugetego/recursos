@@ -42,6 +42,9 @@
             </div>
         </div>
 
+
+        {% if solicitud.fuente not in ['CCM', 'Ingresos extraordinarios'] %}
+
         <div class="col-9">
             <div class="form-floating">
                 {{ form_widget(form.responsable, {'attr': {'class': 'form-control','placeholder':'Nombre de la persona responsable del proyectosolicitante'}}) }}
@@ -53,6 +56,7 @@
             </div>
 
         </div>
+        {% endif %}
 
         {# <div class="col-3">
             <div class="form-floating" id="proyecto">
