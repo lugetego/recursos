@@ -43,7 +43,7 @@
         </div>
 
 
-        {% if solicitud.fuente not in ['CCM', 'Ingresos extraordinarios'] %}
+        {% if solicitud.fuente is defined and not in ['CCM', 'Ingresos extraordinarios'] %}
 
         <div class="col-9">
             <div class="form-floating">
