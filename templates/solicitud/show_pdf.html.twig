@@ -105,53 +105,72 @@
         <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pb-2 mb-1 border-bottom"></div>
         <div class="card border-0">
             <div class="card-body">
-                <h5 class="card-title">{{solicitud.nombre }} </h5>
+                <h5 class="card-title">Solicitud de recursos - {{solicitud.fuente }} </h5>
+                <h5 class="card-subtitle mt-4 mb-2 text-muted">{{solicitud.solicitante }} </h5>
+
                 <h6 class="card-subtitle mb-2 text-muted">Fecha de la solicitud: {{solicitud.fecha|format_datetime('long', 'none', locale='es')  }} </h6>
                 <p class="card-text">
-                    <strong>Tipo de solicitud:</strong> {{ solicitud.tipo }}<br>
-                    <strong>Fuente de financiamiento:</strong> {{ solicitud.fuente }}<br>
-                    {% if solicitud.proyecto != null %}
-                        <strong>Número de proyecto:</strong> {{ solicitud.proyecto }}<br>
+                    {% if solicitud.fuente != "CCM" and solicitud.fuente != "Ingresos extraordinarios"%}
+                        <strong>Número de proyecto:</strong> <br>
                     {%endif %}
+                    <strong>Tutor(a) o Asesor(a) del solicitante:</strong> {{ solicitud.tutor }}<br>
+                    {% if solicitud.fuente not in ['CCM', 'Ingresos extraordinarios'] %}
+                        <strong>Persona responsable del proyecto:</strong> {{ solicitud.responsable }}<br>
+                    {% endif %}
                     <strong>Acta del Consejo Interno:</strong> {{ solicitud.acta }}
                 </p>
-                <h5 class="card-title">${{solicitud.importe|number_format(2) }} </h5>
-                {% set difference = date(solicitud.fin|date('Y/m/d')).diff(date(solicitud.inicio|date('Y/m/d'))) %}
-                {% set leftDays = difference.days %}
+
+                <p class="card-text">
+                    <strong>Motivo de la solicitud:</strong> {{ solicitud.motivo|join(', ') }}
+                </p>
+
+                <p class="card-text">
+                    {% if solicitud.tituloActividad != '' %}
+                        <strong> {{ solicitud.tipoActividad }}:</strong> {{ solicitud.tituloActividad }}
+                    {% endif %}
+                </p>
+
+
+                <p class="card-text">
+                    <strong>Periodo de la solicitud</strong>
+                    {% set difference = date(solicitud.fin|date('Y/m/d')).diff(date(solicitud.inicio|date('Y/m/d'))) %}
+                    {% set leftDays = difference.days %}
                 <h6 class="card-subtitle mb-2 text-muted">De <em>{{solicitud.inicio|format_datetime('long', 'none', locale='es') }}</em>
                     a <em>{{solicitud.fin|format_datetime('long', 'none', locale='es') }} <small>(duración de {{ difference.days + 1 }}
                             {{ difference.days < 1 ? 'día' : difference.days > 1 ? 'días' }})</small></em> </h6>
+                </p>
+
+
+
                 <p class="card-text">
-                    <strong>Ámbito:</strong> {% if solicitud.nacional == true %}Nacional{% else %}Internacional{%endif %}<br>
                     <strong>Lugar:</strong> {{ solicitud.lugar }}<br>
-                    <strong>Motivo:</strong> {{ solicitud.motivo }}<br>
-                    <strong>Participantes:</strong> {{ solicitud.participante }}
+
                 </p>
                 <div class="row justify-content-center">
+                    <p class="card-text">
+                        <strong>Recursos solicitados</strong>
+
+                    </p>
+
                     <table class="table table-border w-50 align-items-center" cellspacing="0" >
                         <tr>
-                            <th scope="col">Alimentos</th>
-                            <td class="text-right">${{ solicitud.alimentos|number_format(2)}}</td>
+                            <th scope="col">Prácticas de campo (proyecto)</th>
+                            <td class="text-right">${{ solicitud.tcProyecto|number_format(2)}}</td>
                         </tr>
                         <tbody>
                         <tr>
-                            <th scope="row">Gasolina</th>
-                            <td class="text-right">${{ solicitud.gasolina|number_format(2)}}</td>
+                            <th scope="row">Prácticas de campo (CCM)</th>
+                            <td class="text-right">${{ solicitud.tcCCM|number_format(2)}}</td>
                         </tr>
                         <tr>
-                            <th scope="row">Hospedaje</th>
-                            <td class="text-right">${{ solicitud.hospedaje|number_format(2)}}</td>
+                            <th scope="row">Transporte aéreo (proyecto)</th>
+                            <td class="text-right">${{ solicitud.taProyecto|number_format(2)}}</td>
 
                         </tr>
                         <tr>
-                            <th scope="row">Peaje</th>
-                            <td class="text-right">${{ solicitud.peaje|number_format(2)}}</td>
+                            <th scope="row">Transporte aéreo (CCM)</th>
+                            <td class="text-right">${{ solicitud.taCCM|number_format(2)}}</td>
 
-                        <tr>
-                            <th scope="row">Transporte terrestre</th>
-                            <td class="text-right">${{ solicitud.transporte|number_format(2)}}</td>
-
-                        </tr>
                         <tr class="bg-light">
                             <th scope="row">Total (MXP)</th>
                             <td class="text-right ">${{ solicitud.importe|number_format(2)}}</td>
@@ -160,8 +179,14 @@
                         </tbody>
                     </table>
                 </div>
+
+
             </div>
         </div>
+    </div>
+    <div class="alert alert-light small mt-3 " role="alert">
+        El solicitante deberá realizar los trámites de su seguro de prácticas de campo por lo menos diez hábiles antes su práctica. El formato está disponible en la página www.patrimonio.unam.mx
+        Los costos vigentes serán por día a nivel nacional de $1.56 y a nivel internacional de $0.52 por día. Favor de pasar a la Dirección del CCM para mejor orientación.
     </div>
     <br>
     <br>
@@ -172,7 +197,7 @@
             {{ solicitud.nombre }}
             <div class="text-center">
                 <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pb-2 mb-1 border-bottom"></div>
-                <p class="text-muted small"> Responsable del proyecto (Nombre y firma)</p>
+                <p class="text-muted small"> Persona solicitante (Nombre y firma)</p>
             </div>
         </div>
         <div class="col-2">
@@ -182,7 +207,7 @@
             <br>
             <div class="text-center">
                 <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pb-2 mb-1 border-bottom"></div>
-                <p class="text-muted small"> Director/Secretario Académico</p>
+                <p class="text-muted small"> Director/Secretario Académico (Nombre y firma)</p>
             </div>
         </div>
     </div>
