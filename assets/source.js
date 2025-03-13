@@ -13,6 +13,7 @@ fuente.addEventListener("change", () => {
         responsable.style.display = "none";
         labelResponsable.style.display = "none";
         responsable.removeAttribute("required"); // Quitar required cuando está oculto
+        responsable.value="";
     } else {
         responsable.style.display = "block";
         labelResponsable.style.display = "block";
