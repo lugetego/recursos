@@ -21,7 +21,7 @@ class SolicitudType extends AbstractType
             ->add('fecha',DateType::class, [
                 'widget' => 'single_text',
                 'data' => new \DateTime(),
-                'required' => false,
+                'required' => true,
 
             ])
             ->add('fuente', ChoiceType::class, [
@@ -80,7 +80,7 @@ class SolicitudType extends AbstractType
                 'placeholder' => 'Seleccionar',
             ])
             ->add('tituloActividad', TextType::class, [
-                'required' => true,  // Makes the field required
+                'required' => false,  // Makes the field required
                 'label' => 'Título de la actividad', ]) // Optional: Add a label if you need one
             ->add('importe')
 
