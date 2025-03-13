@@ -144,74 +144,74 @@
 
                 <p class="card-text">
                     <strong>Lugar:</strong> {{ solicitud.lugar }}<br>
-
                 </p>
 
-
-                <div class="row ">
-                    <p class="card-text">
-                        <strong>Recursos solicitados</strong>
-                    </p>
-
-                    <table class="table table-border w-50 align-items-center" cellspacing="0" >
-                        <tr>
-                            <th scope="col">Prácticas de campo (proyecto)</th>
-                            <td class="text-right">${{ solicitud.tcProyecto|number_format(2)}}</td>
-                        </tr>
-                        <tbody>
-                        <tr>
-                            <th scope="row">Prácticas de campo (CCM)</th>
-                            <td class="text-right">${{ solicitud.tcCCM|number_format(2)}}</td>
-                        </tr>
-                        <tr>
-                            <th scope="row">Transporte aéreo (proyecto)</th>
-                            <td class="text-right">${{ solicitud.taProyecto|number_format(2)}}</td>
-
-                        </tr>
-                        <tr>
-                            <th scope="row">Transporte aéreo (CCM)</th>
-                            <td class="text-right">${{ solicitud.taCCM|number_format(2)}}</td>
-
-                        <tr class="bg-light">
-                            <th scope="row">Total (MXP)</th>
-                            <td class="text-right ">${{ solicitud.importe|number_format(2)}}</td>
-
-                        </tr>
-                        </tbody>
-                    </table>
-                </div>
-
-
             </div>
+
+            <div class="row ">
+                <p class="card-text">
+                    <strong>Recursos solicitados</strong>
+                </p>
+
+                <table class="table table-border w-50 align-items-center" cellspacing="0" >
+                    <tr>
+                        <th scope="col">Prácticas de campo (proyecto)</th>
+                        <td class="text-right">${{ solicitud.tcProyecto|number_format(2)}}</td>
+                    </tr>
+                    <tbody>
+                    <tr>
+                        <th scope="row">Prácticas de campo (CCM)</th>
+                        <td class="text-right">${{ solicitud.tcCCM|number_format(2)}}</td>
+                    </tr>
+                    <tr>
+                        <th scope="row">Transporte aéreo (proyecto)</th>
+                        <td class="text-right">${{ solicitud.taProyecto|number_format(2)}}</td>
+
+                    </tr>
+                    <tr>
+                        <th scope="row">Transporte aéreo (CCM)</th>
+                        <td class="text-right">${{ solicitud.taCCM|number_format(2)}}</td>
+
+                    <tr class="bg-light">
+                        <th scope="row">Total (MXP)</th>
+                        <td class="text-right ">${{ solicitud.importe|number_format(2)}}</td>
+
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+
+
         </div>
     </div>
-    <div class="alert alert-light small mt-3 " role="alert">
-        El solicitante deberá realizar los trámites de su seguro de prácticas de campo por lo menos diez hábiles antes su práctica. El formato está disponible en la página www.patrimonio.unam.mx
-        Los costos vigentes serán por día a nivel nacional de $1.56 y a nivel internacional de $0.52 por día. Favor de pasar a la Dirección del CCM para mejor orientación.
-    </div>
-    <br>
-    <br>
-    <br>
-    <br>
-    <div class="row">
-        <div class="col-5">
-            {{ solicitud.nombre }}
-            <div class="text-center">
-                <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pb-2 mb-1 border-bottom"></div>
-                <p class="text-muted small"> Persona solicitante (Nombre y firma)</p>
-            </div>
-        </div>
-        <div class="col-2">
-            &nbsp;
-        </div>
-        <div class="col-5">
-            <br>
-            <div class="text-center">
-                <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pb-2 mb-1 border-bottom"></div>
-                <p class="text-muted small"> Director/Secretario Académico (Nombre y firma)</p>
-            </div>
+</div>
+<div class="alert alert-light small mt-3 " role="alert">
+    El solicitante deberá realizar los trámites de su seguro de prácticas de campo por lo menos diez hábiles antes su práctica. El formato está disponible en la página www.patrimonio.unam.mx
+    Los costos vigentes serán por día a nivel nacional de $1.56 y a nivel internacional de $0.52 por día. Favor de pasar a la Dirección del CCM para mejor orientación.
+</div>
+<br>
+<br>
+<br>
+<br>
+<div class="row">
+    <div class="col-5">
+        {{ solicitud.nombre }}
+        <div class="text-center">
+            <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pb-2 mb-1 border-bottom"></div>
+            <p class="text-muted small"> Persona solicitante (Nombre y firma)</p>
         </div>
     </div>
+    <div class="col-2">
+        &nbsp;
+    </div>
+    <div class="col-5">
+        <br>
+        <div class="text-center">
+            <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pb-2 mb-1 border-bottom"></div>
+            <p class="text-muted small"> Director/Secretario Académico (Nombre y firma)</p>
+        </div>
+    </div>
+</div>
 </div>
 </body>
 </html>
