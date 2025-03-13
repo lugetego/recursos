@@ -1,3 +1,4 @@
+{#
 <!doctype html>
 <html lang="en">
 <head>
@@ -140,15 +141,9 @@
                             {{ difference.days < 1 ? 'día' : difference.days > 1 ? 'días' }})</small></em> </h6>
                 </p>
 
-
-
                 <p class="card-text">
                     <strong>Lugar:</strong> {{ solicitud.lugar }}<br>
                 </p>
-
-            </div>
-
-            <div class="row ">
                 <p class="card-text">
                     <strong>Recursos solicitados</strong>
                 </p>
@@ -213,5 +208,165 @@
     </div>
 </div>
 </div>
+</body>
+</html>#}
+
+
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" crossorigin="anonymous">
+    <style>
+        html {
+            font-family: sans-serif;
+            line-height: 1.15;
+            -webkit-text-size-adjust: 100%;
+            -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+        }
+        hr {
+            margin: 0;
+            padding: 0;
+            border-color: red;
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 100%;
+        }
+        .row {
+            display: flex;
+            justify-content: center;
+        }
+        .row > div {
+            flex: 1;
+        }
+        .row > div:last-child {
+            margin-right: 0;
+        }
+        table {
+            border-collapse: separate !important;
+        }
+        th, td {
+            border-top: none;
+            border-left: none;
+            border-right: none;
+        }
+        .h2, h2 {
+            font-size: 1.7rem;
+        }
+        .justify-content-between {
+            justify-content: space-between !important;
+        }
+    </style>
+    <title>Solicitud de Recursos</title>
+</head>
+<body>
+
+<div class="container">
+    <div class="row">
+        <div class="col-4 d-flex justify-content-start align-items-center">
+            <img src="{{ absolute_url(asset('images/unam.png')) }}" alt="UNAM escudo" class="rounded float-start">
+        </div>
+        <div class="col-4 d-flex justify-content-start align-items-center">
+            <h2>Solicitud de Recursos</h2>
+        </div>
+        <div class="col-4 d-flex justify-content-end align-items-center">
+            <img src="{{ absolute_url(asset('images/ccm.png')) }}" alt="CCM logo" class="rounded">
+        </div>
+    </div>
+
+    <div class="mt-2">
+        <div class="border-bottom mb-3"></div>
+        <div class="card border-0">
+            <div class="card-body">
+                <h5 class="card-title">Solicitud de recursos - {{ solicitud.fuente }}</h5>
+                <h5 class="card-subtitle mt-4 mb-2 text-muted">{{ solicitud.solicitante }}</h5>
+                <h6 class="card-subtitle mb-2 text-muted">Fecha de la solicitud: {{ solicitud.fecha|format_datetime('long', 'none', locale='es') }}</h6>
+
+                <p class="card-text">
+                    {% if solicitud.fuente not in ['CCM', 'Ingresos extraordinarios'] %}
+                        <strong>Número de proyecto:</strong> <br>
+                    {% endif %}
+                    <strong>Tutor(a) o Asesor(a) del solicitante:</strong> {{ solicitud.tutor }}<br>
+                    {% if solicitud.fuente not in ['CCM', 'Ingresos extraordinarios'] %}
+                        <strong>Persona responsable del proyecto:</strong> {{ solicitud.responsable }}<br>
+                    {% endif %}
+                    <strong>Acta del Consejo Interno:</strong> {{ solicitud.acta }}
+                </p>
+
+                <p class="card-text">
+                    <strong>Motivo de la solicitud:</strong> {{ solicitud.motivo|join(', ') }}
+                </p>
+
+                {% if solicitud.tituloActividad is not empty %}
+                    <p class="card-text">
+                        <strong>{{ solicitud.tipoActividad }}:</strong> {{ solicitud.tituloActividad }}
+                    </p>
+                {% endif %}
+
+                <p class="card-text">
+                    <strong>Periodo de la solicitud</strong>
+                    {% set difference = date(solicitud.fin|date('Y/m/d')).diff(date(solicitud.inicio|date('Y/m/d'))) %}
+                <h6 class="card-subtitle mb-2 text-muted">
+                    De <em>{{ solicitud.inicio|format_datetime('long', 'none', locale='es') }}</em>
+                    a <em>{{ solicitud.fin|format_datetime('long', 'none', locale='es') }}
+                        <small>(duración de {{ difference.days + 1 }} {{ difference.days == 0 ? 'día' : 'días' }})</small>
+                    </em>
+                </h6>
+                </p>
+
+                <p class="card-text"><strong>Lugar:</strong> {{ solicitud.lugar }}</p>
+                <p class="card-text"><strong>Recursos solicitados</strong></p>
+
+                <table class="table table-border w-50" cellspacing="0">
+                    <tr>
+                        <th scope="col">Prácticas de campo (proyecto)</th>
+                        <td class="text-right">${{ solicitud.tcProyecto|number_format(2) }}</td>
+                    </tr>
+                    <tr>
+                        <th scope="row">Prácticas de campo (CCM)</th>
+                        <td class="text-right">${{ solicitud.tcCCM|number_format(2) }}</td>
+                    </tr>
+                    <tr>
+                        <th scope="row">Transporte aéreo (proyecto)</th>
+                        <td class="text-right">${{ solicitud.taProyecto|number_format(2) }}</td>
+                    </tr>
+                    <tr>
+                        <th scope="row">Transporte aéreo (CCM)</th>
+                        <td class="text-right">${{ solicitud.taCCM|number_format(2) }}</td>
+                    </tr>
+                    <tr class="bg-light">
+                        <th scope="row">Total (MXP)</th>
+                        <td class="text-right">${{ solicitud.importe|number_format(2) }}</td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="alert alert-light small mt-3" role="alert">
+    El solicitante deberá realizar los trámites de su seguro de prácticas de campo por lo menos diez días hábiles antes de su práctica. El formato está disponible en la página www.patrimonio.unam.mx.
+    Los costos vigentes serán de $1.56 por día a nivel nacional y $0.52 por día a nivel internacional. Favor de pasar a la Dirección del CCM para mejor orientación.
+</div>
+
+<div class="row mt-5">
+    <div class="col-5 text-center">
+        {{ solicitud.solicitante }}
+        <div class="border-bottom mb-1"></div>
+        <p class="text-muted small">Persona solicitante (Nombre y firma)</p>
+    </div>
+    <div class="col-2"></div>
+    <div class="col-5 text-center">
+        <br>
+        <div class="border-bottom mb-1"></div>
+        <p class="text-muted small">Director/Secretario Académico (Nombre y firma)</p>
+    </div>
+</div>
+
 </body>
 </html>
