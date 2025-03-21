@@ -20,18 +20,6 @@
     </div>
 
     <div class="row">
-        {# <div class="col-3">
-            <div class="form-floating">
-                {{ form_widget(form.tipo, {'attr': {'class': 'form-control','placeholder':'Tipo de la solicitud'}}) }}
-                {{ form_label(form.tipo,'Tipo de la solicitud') }}
-            </div>
-        </div>#}
-        {# <div class="col-3">
-            <div class="form-floating">
-                {{ form_widget(form.fecha, {'attr': {'class': 'form-control','placeholder':'Fecha de la solicitud'}}) }}
-                {{ form_label(form.fecha,'Fecha de la solicitud') }}
-            </div>
-        </div>#}
         <div class="col-3">
             <div class="form-floating">
                 {{ form_widget(form.fuente, {'attr': {'class': 'form-control','placeholder':'Fuente de financiamiento'}}) }}
@@ -41,37 +29,15 @@
                 {{ form_errors(form.fuente) }}
             </div>
         </div>
-
-
-
         <div class="col-9">
             <div class="form-floating">
                 {{ form_widget(form.responsable, {'attr': {'class': 'form-control','placeholder':'Nombre de la persona responsable del proyectosolicitante'}}) }}
                 {{ form_label(form.responsable,'Persona responsable del proyecto') }}
             </div>
-
             <div class="invalid-error invalid-feedback">
                 {{ form_errors(form.responsable) }}
             </div>
-
         </div>
-
-        {# <div class="col-3">
-            <div class="form-floating" id="proyecto">
-                {{ form_widget(form.proyecto, {'attr': {'class': 'form-control','placeholder':'Número de proyecto'}}) }}
-                {{ form_label(form.proyecto,'Número de proyecto ') }}
-            </div>
-            <div class="invalid-error">
-                {{ form_errors(form.proyecto) }}
-            </div>
-
-        </div>
-        <div class="col-3">
-            <div class="form-floating">
-                {{ form_widget(form.acta, {'attr': {'class': 'form-control','placeholder':'Acta de Consejo Interno'}}) }}
-                {{ form_label(form.acta,'Acta de Consejo Interno') }}
-            </div>
-        </div>#}
     </div>
     <div class="row mt-2">
         <div class="col-12">
@@ -79,55 +45,39 @@
                 {{ form_widget(form.solicitante, {'attr': {'class': 'form-control','placeholder':'Nombre del solicitante'}}) }}
                 {{ form_label(form.solicitante,'Persona solicitante') }}
             </div>
-
             <div class="invalid-error invalid-feedback">
                 {{ form_errors(form.solicitante) }}
             </div>
-
         </div>
     </div>
     <div class="row mt-2">
         <div class="col-12">
-
             <div class="form-floating">
                 {{ form_widget(form.tutor, {'attr': {'class': 'form-control','placeholder':'Nombre del solicitante'}}) }}
                 {{ form_label(form.tutor,'Tutor(a) o Asesor(a)') }}
             </div>
         </div>
     </div>
-
     <div class="mt-4">
         <div class="alert alert-primary" role="alert">
             Las fechas de inicio y fin deben seleccionarse incluyendo los días de traslado necesarios para llevar a cabo la actividad.
         </div>
     </div>
     <div class="row mt-2">
-
-
         <p class="small text-primary" id="dias"></p>
-
         <div class="col-3" id="fecha_inicio">
             <div class="form-floating">
                 {{ form_widget(form.inicio, {'attr': {'class': 'form-control','placeholder':'Fecha inicial'}}) }}
-
                 {{ form_label(form.inicio,'Fecha inicio') }}
             </div>
             {{ form_errors(form.inicio) }}
-
-
-
         </div>
-
         <div class="col-3" id="fecha_fin">
             <div class="form-floating">
                 {{ form_widget(form.fin, {'attr': {'class': 'form-control','placeholder':'Fecha final'}}) }}
                 {{ form_label(form.fin,'Fecha fin') }}
             </div>
-
-
         </div>
-
-
         <div class="col-6" id="motivo">
             <label for="motivo" class="form-label">{{ form_label(form.motivo) }}</label>
             <div>
@@ -138,39 +88,12 @@
                 {% endfor %}
             </div>
             {{ form_errors(form.motivo) }}
-
         </div>
-
         <div class="col-12">
             <div id="daterange-error-msg" class="small"></div>
-            <p class="small text-primary" id="participacion"></p>
-
+            <p class="mt-3 small text-primary " id="participacion"></p>
         </div>
-
-        {# <div class="col-6" id="daterange-container" >
-            <div class="form-floating">
-                <input placeholder="Fecha de inicio y fin de la solicitud" class="form-control" type="text" name="daterange"  />
-                <label for="floatingInputValue">Fecha de inicio y fin de la solicitud</label>
-            </div>
-            <div class="col-12">
-                &nbsp;<p class="small text-primary" id="dias"></p>
-            </div>
-            <div class="invalid-error ">
-
-                <div id="daterange-error-msg"></div>
-
-            </div>
-
-
-            <div id="daterange-error-msg"></div>
-
-
-        </div>
-        #}
-
-
     </div>
-
     <div class="row mt-2">
         <p class="small text-primary" id="participacion"></p>
 
@@ -186,20 +109,8 @@
                 {{ form_label(form.tituloActividad,'Título de la actividad') }}
             </div>
         </div>
-
-        {#  <div class="col-6 mt-2">
-            <div class="form-floating">
-                {{ form_widget(form.actividad, {'attr': {'class': 'form-control','placeholder':'Motivo de la licencia o comisión'}}) }}
-                {{ form_label(form.actividad,'Motivo de la licencia o comisión') }}
-            </div>
-        </div>#}
     </div>
-
-
-
-
     <div class="row mt-2">
-
         <div class="col-6">
             <div class="form-floating">
                 {{ form_widget(form.institucion, {'attr': {'class': 'form-control','placeholder':'Institución en la que se realizará la actividad'}}) }}
@@ -257,12 +168,9 @@
                 {{ form_errors(form.taCCM) }}
             </div>
         </div>
-
     </div>
     <hr>
     <div class="row ">
-
-
         <div class="col-6">
             <div class="input-group mt-5">
                 <span class="input-group-text">$</span>
@@ -274,15 +182,23 @@
             </div>
         </div>
     </div>
-
     <div class="alert alert-light small mt-3 " role="alert">
-        El solicitante deberá realizar los trámites de su seguro de prácticas de campo por lo menos diez hábiles antes su práctica. El formato está disponible en la página www.patrimonio.unam.mx
-        Los costos vigentes serán por día a nivel nacional de $1.56 y a nivel internacional de $0.52 por día. Favor de pasar a la Dirección del CCM para mejor orientación.
+        <p class="justify-content-between">
+        <ul>
+            <li>El solicitante deberá realizar los trámites de su seguro de prácticas escolares por lo menos diez días hábiles antes de su práctica.</li>
+            <li>El formato está disponible en la página <a href="http://www.patrimonio.unam.mx" target="_blank">www.patrimonio.unam.mx</a>.</li>
+            <li>Los costos vigentes serán por día:
+                <ul>
+                    <li>Nivel nacional: $1.56</li>
+                    <li>Nivel internacional: $0.52</li>
+                </ul>
+            </li>
+            <li>Favor de pasar a la Dirección del CCM para mejor orientación.</li>
+        </ul>
+        </p>
     </div>
-
     {{ form_widget(form) }}
     <div class="d-grid gap-2 pt-3 mb-2 col-3 mx-auto" id="envio">
         <button class="btn btn-dark" ><i class="fa-regular fa-eye"></i> {{ button_label|default('Vista previa') }}</button>
     </div>
-
     {{ form_end(form) }}

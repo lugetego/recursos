@@ -17,6 +17,11 @@
         <div class="mt-2">
             <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pb-2 mb-1 border-bottom"></div>
             <div class="col-12 d-flex justify-content-end align-items-center mt-2">
+                {% if is_granted('ROLE_ADMIN') %}
+                    <a class="btn btn-dark me-2" id="showButton" href="{{ path('app_solicitud_index') }}" role="button">
+                        <i class="fa-regular fa-list-alt"></i> Ver todas
+                    </a>
+                {% endif %}
                 <a class="btn btn-dark me-2" id="editButton" href="{{ path('app_solicitud_edit',{'slug': solicitud.slug}) }}" role="button">
                     <i class="fa-regular fa-edit"></i> Modificar
                 </a>
@@ -41,35 +46,29 @@
                         {% endif %}
                         <strong>Acta del Consejo Interno:</strong> {{ solicitud.acta }}
                     </p>
-
                     <p class="card-text">
                         <strong>Motivo de la solicitud:</strong> {{ solicitud.motivo|join(', ') }}
                     </p>
-
                     <p class="card-text">
                         {% if solicitud.tituloActividad != '' %}
-                        <strong> {{ solicitud.tipoActividad }}:</strong> {{ solicitud.tituloActividad }}
+                            <strong> {{ solicitud.tipoActividad }}:</strong> {{ solicitud.tituloActividad }}
                         {% endif %}
                     </p>
-
                     <p class="card-text">
                         <strong>Periodo de la solicitud</strong>
-                    {% set difference = date(solicitud.fin|date('Y/m/d')).diff(date(solicitud.inicio|date('Y/m/d'))) %}
-                    {% set leftDays = difference.days %}
+                        {% set difference = date(solicitud.fin|date('Y/m/d')).diff(date(solicitud.inicio|date('Y/m/d'))) %}
+                        {% set leftDays = difference.days %}
                     <h6 class="card-subtitle mb-2 text-muted">De <em>{{solicitud.inicio|format_datetime('long', 'none', locale='es') }}</em>
                         a <em>{{solicitud.fin|format_datetime('long', 'none', locale='es') }} <small>(duración de {{ difference.days + 1 }}
                                 {{ difference.days < 1 ? 'día' : difference.days > 1 ? 'días' }})</small></em> </h6>
                     </p>
-
                     <p class="card-text">
                         <strong>Lugar:</strong> {{ solicitud.lugar }}<br>
                     </p>
-
                     <div class="row justify-content-center">
                         <p class="card-text">
                             <strong>Recursos solicitados</strong>
                         </p>
-
                         <table class="table table-border w-50 align-items-center" cellspacing="0" >
                             <tr>
                                 <th scope="col">Prácticas escolares (proyecto)</th>
@@ -83,16 +82,13 @@
                             <tr>
                                 <th scope="row">Transporte aéreo (proyecto)</th>
                                 <td class="text-right">${{ solicitud.taProyecto|number_format(2)}}</td>
-
                             </tr>
                             <tr>
                                 <th scope="row">Transporte aéreo (CCM)</th>
                                 <td class="text-right">${{ solicitud.taCCM|number_format(2)}}</td>
-
                             <tr class="bg-light">
                                 <th scope="row">Total (MXP)</th>
                                 <td class="text-right ">${{ solicitud.importe|number_format(2)}}</td>
-
                             </tr>
                             </tbody>
                         </table>
@@ -101,8 +97,19 @@
             </div>
         </div>
         <div class="alert alert-light small mt-3 " role="alert">
-            El solicitante deberá realizar los trámites de su seguro de prácticas escolares por lo menos diez hábiles antes su práctica. El formato está disponible en la página www.patrimonio.unam.mx
-            Los costos vigentes serán por día a nivel nacional de $1.56 y a nivel internacional de $0.52 por día. Favor de pasar a la Dirección del CCM para mejor orientación.
+            <p class="justify-content-between">
+            <ul>
+                <li>El solicitante deberá realizar los trámites de su seguro de prácticas escolares por lo menos diez días hábiles antes de su práctica.</li>
+                <li>El formato está disponible en la página <a href="http://www.patrimonio.unam.mx" target="_blank">www.patrimonio.unam.mx</a>.</li>
+                <li>Los costos vigentes serán por día:
+                    <ul>
+                        <li>Nivel nacional: $1.56</li>
+                        <li>Nivel internacional: $0.52</li>
+                    </ul>
+                </li>
+                <li>Favor de pasar a la Dirección del CCM para mejor orientación.</li>
+            </ul>
+            </p>
         </div>
         <br>
         <br>
@@ -115,7 +122,6 @@
                 </div>
             </div>
             <div class="col-2">
-                &nbsp;
             </div>
             <div class="col-5">
                 <br>
