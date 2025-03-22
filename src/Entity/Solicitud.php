@@ -21,10 +21,15 @@ class Solicitud
     private $id;
 
     /**
-     * @ORM\Column(type="string", length=100, unique=true)
-     * @Gedmo\Slug(fields={"solicitante","fecha"}, updatable=false)
+     * @ORM\Column(type="string", length=150, unique=true)
+     * @Gedmo\Slug(fields={"solicitante", "fecha", "token"}, updatable=false)
      */
     private $slug;
+
+    /**
+     * @ORM\Column(type="string", length=8)
+     */
+    private $token;
 
     /**
      * @ORM\Column(type="date")
@@ -416,6 +421,10 @@ class Solicitud
     }
 
 
+    public function __construct()
+    {
+        $this->token = substr(bin2hex(random_bytes(4)), 0, 8); // genera un token aleatorio de 8 caracteres
+    }
 
 
 

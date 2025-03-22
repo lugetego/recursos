@@ -1,0 +1,13 @@
+Nueva solicitud
+
+Solicitante: {{ solicitud.solicitante|title }}
+
+{% set difference = date(solicitud.fin|date('Y/m/d')).diff(date(solicitud.inicio|date('Y/m/d'))) %}
+{% set leftDays = difference.days %}
+De {{solicitud.inicio|format_datetime('long', 'none', locale='es') }} a {{solicitud.fin|format_datetime('long', 'none', locale='es') }}
+
+(duración de {{ difference.days + 1 }} {{ difference.days < 1 ? 'día' : difference.days > 1 ? 'días' }})
+
+Lugar: {{ solicitud.lugar }}
+
+https://tic.matmor.unam.mx/recursos/solicitud/{{ solicitud.slug }}

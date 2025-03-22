@@ -41,8 +41,8 @@ security:
     # Note: Only the *first* access control that matches will be used
     access_control:
         - { path: ^/solicitud/new, roles: PUBLIC_ACCESS }
-        - { path: ^/solicitud/.+/edit , roles: ROLE_ADMIN }
-        - { path: ^/solicitud/.+, roles: ROLE_ADMIN }
+        - { path: ^/solicitud/.+/edit , roles: PUBLIC_ACCESS }
+        - { path: ^/solicitud/.+, roles: PUBLIC_ACCESS }
         - { path: ^/solicitud/, roles: ROLE_ADMIN }
         # - { path: ^/profile, roles: ROLE_USER }
 
