@@ -44,6 +44,7 @@ security:
         - { path: ^/solicitud/.+/edit , roles: PUBLIC_ACCESS }
         - { path: ^/solicitud/.+, roles: PUBLIC_ACCESS }
         - { path: ^/solicitud/, roles: ROLE_ADMIN }
+        - { path: ^/register, roles: ROLE_ADMIN }
         # - { path: ^/profile, roles: ROLE_USER }
 
 when@test:
