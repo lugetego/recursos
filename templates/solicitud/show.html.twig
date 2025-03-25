@@ -36,14 +36,14 @@
                     <h5 class="card-subtitle mt-4 mb-2 text-muted">{{solicitud.solicitante }} </h5>
 
                     <p class="card-text">
-                        {% if solicitud.fuente != "CCM" and solicitud.fuente != "Ingresos extraordinarios"%}
+                      {#  {% if solicitud.fuente != "CCM" and solicitud.fuente != "Ingresos extraordinarios"%}
                             <strong>Número de proyecto:</strong> <br>
-                        {%endif %}
+                        {%endif %}#}
                         <strong>Tutor(a) o Asesor(a) del solicitante:</strong> {{ solicitud.tutor }}<br>
                         {% if solicitud.fuente not in ['CCM', 'Ingresos extraordinarios'] %}
                             <strong>Persona responsable del proyecto:</strong> {{ solicitud.responsable }}<br>
                         {% endif %}
-                        <strong>Acta del Consejo Interno:</strong> {{ solicitud.acta }}
+                    {#    <strong>Acta del Consejo Interno:</strong> {{ solicitud.acta }}#}
                     </p>
                     <p class="card-text">
                         <strong>Motivo de la solicitud:</strong> {{ solicitud.motivo|join(', ') }}
