@@ -35,7 +35,7 @@ class Solicitud
     /**
      * @ORM\Column(type="boolean")
      */
-    private $impresion;
+    private $impresa;
 
     /**
      * @ORM\Column(type="date")
@@ -456,20 +456,18 @@ class Solicitud
     /**
      * @return mixed
      */
-    public function getImpresion()
+    public function getImpresa()
     {
-        return $this->impresion;
+        return $this->impresa;
     }
 
     /**
-     * @param mixed $impresion
+     * @param mixed $impresa
      */
-    public function setImpresion($impresion): void
+    public function setImpresa($impresa): void
     {
-        $this->impresion = $impresion;
+        $this->impresa = $impresa;
     }
-
-
 
 
 
