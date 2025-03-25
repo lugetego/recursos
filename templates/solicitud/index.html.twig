@@ -16,7 +16,6 @@
             <tr>
                 <th>Fecha de solicitud</th>
                 <th>Solicitante</th>
-                <th>Acta CI</th>
                 <th>Inicio</th>
                 <th>Fin</th>
                 <th>Lugar</th>
@@ -32,7 +31,6 @@
             <tr>
                 <td>{{ solicitud.fecha ? solicitud.fecha|format_datetime('long', 'none', locale='es') }}</td>
                 <td>{{ solicitud.solicitante }}</td>
-                <td>{{ solicitud.acta }}</td>
                 <td>{{ solicitud.inicio ? solicitud.inicio|format_datetime('long', 'none', locale='es') }}</td>
                 <td>{{ solicitud.fin ? solicitud.fin|format_datetime('long', 'none', locale='es') }}</td>
                 <td>{{ solicitud.lugar }}</td>
