@@ -50,7 +50,7 @@
                         <strong>Motivo de la solicitud:</strong> {{ solicitud.motivo|join(', ') }}
                     </p>
                     <p class="card-text">
-                        {% if solicitud.motivo in ['Participación'] %}
+                        {% if 'Participación' in solicitud.motivo %}
                             <strong> {{ solicitud.tipoActividad }}:</strong> {{ solicitud.tituloActividad }}
                         {% endif %}
                     </p>
