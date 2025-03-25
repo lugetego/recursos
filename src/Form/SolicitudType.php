@@ -80,9 +80,10 @@ class SolicitudType extends AbstractType
                     'Trabajo de Investigación'=>'Trabajo de Investigación',
                 ],
                 'placeholder' => 'Seleccionar',
+                'required'=> true,
             ])
             ->add('tituloActividad', TextType::class, [
-                'required' => false,  // Makes the field required
+                'required' => true,  // Makes the field required
                 'label' => 'Título de la actividad', ]) // Optional: Add a label if you need one
             ->add('importe')
 
