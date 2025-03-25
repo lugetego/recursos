@@ -3,10 +3,14 @@ Nueva solicitud
 Solicitante: {{ solicitud.solicitante|title }}
 
 {% set difference = date(solicitud.fin|date('Y/m/d')).diff(date(solicitud.inicio|date('Y/m/d'))) %}
-{% set leftDays = difference.days %}
-De {{solicitud.inicio|format_datetime('long', 'none', locale='es') }} a {{solicitud.fin|format_datetime('long', 'none', locale='es') }}
+{% set duracion = difference.days + 1 %}
 
-(duración de {{ difference.days + 1 }} {{ difference.days < 1 ? 'día' : difference.days > 1 ? 'días' }})
+<p class="card-text">
+    <strong>Periodo de la solicitud:</strong><br>
+    De <em>{{ solicitud.inicio|format_datetime('long', 'none', locale='es') }}</em>
+    a <em>{{ solicitud.fin|format_datetime('long', 'none', locale='es') }}</em>
+    <small>(duración de {{ duracion }} {{ duracion == 1 ? 'día' : 'días' }})</small>
+</p>
 
 Lugar: {{ solicitud.lugar }}
 
