@@ -56,12 +56,20 @@
                     </p>
                     <p class="card-text">
                         <strong>Periodo de la solicitud</strong>
-                        {% set difference = date(solicitud.fin|date('Y/m/d')).diff(date(solicitud.inicio|date('Y/m/d'))) %}
-                        {% set leftDays = difference.days %}
-                    <h6 class="card-subtitle mb-2 text-muted">De <em>{{solicitud.inicio|format_datetime('long', 'none', locale='es') }}</em>
-                        a <em>{{solicitud.fin|format_datetime('long', 'none', locale='es') }} <small>(duración de {{ difference.days + 1 }}
-                                {{ difference.days < 1 ? 'día' : difference.days > 1 ? 'días' }})</small></em> </h6>
                     </p>
+
+                    {% set difference = date(solicitud.fin|date('Y/m/d')).diff(date(solicitud.inicio|date('Y/m/d'))) %}
+                    {% set leftDays = difference.days %}
+
+                    <h6 class="card-subtitle mb-2 text-muted">
+                        De <em>{{ solicitud.inicio|format_datetime('long', 'none', locale='es') }}</em>
+                        a <em>{{ solicitud.fin|format_datetime('long', 'none', locale='es') }}</em>
+                        <small>
+                            (duración de {{ difference.days + 1 }}
+                            {{ difference.days < 1 ? 'día' : 'días' }})
+                        </small>
+                    </h6>
+
                     <p class="card-text">
                         <strong>Lugar:</strong> {{ solicitud.lugar }}<br>
                     </p>
