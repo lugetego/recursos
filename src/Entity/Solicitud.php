@@ -31,6 +31,12 @@ class Solicitud
      */
     private $token;
 
+
+    /**
+     * @ORM\Column(type="boolean")
+     */
+    private $impresa;
+
     /**
      * @ORM\Column(type="date")
      */
@@ -447,10 +453,21 @@ class Solicitud
         $this->numproyecto = $numproyecto;
     }
 
+    /**
+     * @return mixed
+     */
+    public function getImpresa()
+    {
+        return $this->impresa;
+    }
 
-
-
-
+    /**
+     * @param mixed $impresa
+     */
+    public function setImpresa($impresa): void
+    {
+        $this->impresa = $impresa;
+    }
 
 
 

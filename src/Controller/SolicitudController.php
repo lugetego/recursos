@@ -58,6 +58,10 @@ class SolicitudController extends AbstractController
 
         $mailer->send($message);
 
+        $solicitud->setImpresa(true);
+        $solicitudRepository->add($solicitud, true);
+
+
         return new Response(
             $this->knpSnappy->getOutputFromHtml($html, $pdfOptions),
             200,
