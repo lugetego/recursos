@@ -105,25 +105,28 @@
         <div class="border-bottom mb-3"></div>
         <div class="card border-0">
             <div class="card-body">
-                <h5 class="card-title">Solicitud de recursos - {{ solicitud.fuente }}</h5>
 
                 <p class="card-text" style="overflow: hidden;">
-    <span style="float: left;">
-        <strong>Acta del Consejo Interno:</strong>
-        <span style="display: inline-block; border-bottom: 1px solid gray; min-width: 100px;">
-            {{ solicitud.acta }}
-        </span>
-    </span>
+                    <span style="float: left;">
+                        <strong>Acta del Consejo Interno:</strong>
+                        <span style="display: inline-block; border-bottom: 1px solid gray; min-width: 100px;">
+                            {{ solicitud.acta }}
+                        </span>
+                    </span>
 
                     {% if solicitud.fuente not in ['CCM', 'Ingresos extraordinarios'] %}
                         <span style="float: right;">
-            <strong>Número de proyecto:</strong>
-            <span style="display: inline-block; border-bottom: 1px solid gray; min-width: 100px;">
-                {{ solicitud.numproyecto }}
-            </span>
-        </span>
+                            <strong>Número de proyecto:</strong>
+                            <span style="display: inline-block; border-bottom: 1px solid gray; min-width: 100px;">
+                                {{ solicitud.numproyecto }}
+                            </span>
+                          </span>
                     {% endif %}
                 </p>
+
+                <h5 class="card-title">Solicitud de recursos - {{ solicitud.fuente }}</h5>
+
+
 
                 <h5 class="card-subtitle mt-4 mb-2 text-muted">{{ solicitud.solicitante }}</h5>
                 <h6 class="card-subtitle mb-2 text-muted">Fecha de la solicitud: {{ solicitud.fecha|format_datetime('long', 'none', locale='es') }}</h6>
