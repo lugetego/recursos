@@ -55,7 +55,7 @@ class SolicitudController extends AbstractController
         // Mail
         $message = (new \Swift_Message('Solicitud de recursos - Prácticas escolares'))
             ->setFrom('webmaster@matmor.unam.mx')
-           // ->setTo('vorozco@matmor.unam.mx')
+            ->setTo('vorozco@matmor.unam.mx')
             ->setBcc(array('gerardo@matmor.unam.mx'))
             ->setBody($this->renderView('mail/nueva.txt.twig', array('solicitud' => $solicitud)));
 
@@ -97,16 +97,6 @@ class SolicitudController extends AbstractController
 
             $solicitud->setFecha(new \DateTime());
             $solicitudRepository->add($solicitud, true);
-
-          /*  // Mail
-            $message = (new \Swift_Message('Solicitud de recursos - Prácticas escolares'))
-                ->setFrom('webmaster@matmor.unam.mx')
-                // ->setTo('vorozco@matmor.unam.mx')
-                ->setBcc(array('gerardo@matmor.unam.mx'))
-                ->setBody($this->renderView('mail/nueva.txt.twig', array('solicitud' => $solicitud)));
-
-            $mailer->send($message);*/
-
 
 //            return $this->redirectToRoute('app_solicitud_index', [], Response::HTTP_SEE_OTHER);
             return $this->redirectToRoute('app_solicitud_show', [
