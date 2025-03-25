@@ -107,21 +107,21 @@
             <div class="card-body">
                 <h5 class="card-title">Solicitud de recursos - {{ solicitud.fuente }}</h5>
 
-                <p class="card-text d-flex justify-content-between">
-                    <span>
-                        <strong>Acta del Consejo Interno:</strong>
-                        <span style="display: inline-block; border-bottom: 1px solid gray; min-width: 100px;">
-                            {{ solicitud.acta }}
-                        </span>
-                    </span>
+                <p class="card-text" style="overflow: hidden;">
+    <span style="float: left;">
+        <strong>Acta del Consejo Interno:</strong>
+        <span style="display: inline-block; border-bottom: 1px solid gray; min-width: 100px;">
+            {{ solicitud.acta }}
+        </span>
+    </span>
 
                     {% if solicitud.fuente not in ['CCM', 'Ingresos extraordinarios'] %}
-                        <span>
-                            <strong>Número de proyecto:</strong>
-                                <span style="display: inline-block; border-bottom: 1px solid gray; min-width: 100px;">
-                                    {{ solicitud.numproyecto }}
-                                </span>
-                        </span>
+                        <span style="float: right;">
+            <strong>Número de proyecto:</strong>
+            <span style="display: inline-block; border-bottom: 1px solid gray; min-width: 100px;">
+                {{ solicitud.numproyecto }}
+            </span>
+        </span>
                     {% endif %}
                 </p>
 
