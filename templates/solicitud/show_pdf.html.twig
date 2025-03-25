@@ -112,18 +112,19 @@
                     <span style="display: inline-block; border-bottom: 1px solid gray; min-width: 100px;">
                         {{ solicitud.acta }}
                      </span>
-                </p>
-
-                <h5 class="card-subtitle mt-4 mb-2 text-muted">{{ solicitud.solicitante }}</h5>
-                <h6 class="card-subtitle mb-2 text-muted">Fecha de la solicitud: {{ solicitud.fecha|format_datetime('long', 'none', locale='es') }}</h6>
-
-                <p class="card-text">
                     {% if solicitud.fuente not in ['CCM', 'Ingresos extraordinarios'] %}
                         <strong>Número de proyecto:</strong>
                         <span style="display: inline-block; border-bottom: 1px solid gray; min-width: 100px;">
                             {{ solicitud.numproyecto }}
                      </span>
                     {% endif %}
+                </p>
+
+                <h5 class="card-subtitle mt-4 mb-2 text-muted">{{ solicitud.solicitante }}</h5>
+                <h6 class="card-subtitle mb-2 text-muted">Fecha de la solicitud: {{ solicitud.fecha|format_datetime('long', 'none', locale='es') }}</h6>
+
+                <p class="card-text">
+
                     <strong>Tutor(a) o Asesor(a) del solicitante:</strong> {{ solicitud.tutor }}<br>
                     {% if solicitud.fuente not in ['CCM', 'Ingresos extraordinarios'] %}
                         <strong>Persona responsable del proyecto:</strong> {{ solicitud.responsable }}<br>
