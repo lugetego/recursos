@@ -29,7 +29,7 @@ class SolicitudController extends AbstractController
     /**
      * @Route("/{id}/pdf", name="app_solicitud_pdf", methods={"GET"})
      */
-    public function pdfAction(Solicitud $solicitud, SolicitudRepository $solicitudRepository, \Knp\Snappy\Pdf $knpSnappy)
+    public function pdfAction(Solicitud $solicitud, SolicitudRepository $solicitudRepository, \Knp\Snappy\Pdf $knpSnappy, \Swift_Mailer $mailer)
     {
         $this->knpSnappy = $knpSnappy;
 
@@ -48,6 +48,16 @@ class SolicitudController extends AbstractController
             'margin-bottom' => 10,
             'margin-left'   => 10,
         );
+
+        // Mail
+        $message = (new \Swift_Message('Solicitud de recursos - Prácticas escolares'))
+            ->setFrom('webmaster@matmor.unam.mx')
+           // ->setTo('vorozco@matmor.unam.mx')
+            ->setBcc(array('gerardo@matmor.unam.mx'))
+            ->setBody($this->renderView('mail/nueva.txt.twig', array('solicitud' => $solicitud)));
+
+        $mailer->send($message);
+
         return new Response(
             $this->knpSnappy->getOutputFromHtml($html, $pdfOptions),
             200,
@@ -56,6 +66,7 @@ class SolicitudController extends AbstractController
                 'Content-Disposition' => sprintf('attachment; filename="%s"', $filename),
 
             ]
+
         );
 
 
@@ -80,14 +91,14 @@ class SolicitudController extends AbstractController
             $solicitud->setFecha(new \DateTime());
             $solicitudRepository->add($solicitud, true);
 
-            // Mail
+          /*  // Mail
             $message = (new \Swift_Message('Solicitud de recursos - Prácticas escolares'))
                 ->setFrom('webmaster@matmor.unam.mx')
-                ->setTo('vorozco@matmor.unam.mx')
+                // ->setTo('vorozco@matmor.unam.mx')
                 ->setBcc(array('gerardo@matmor.unam.mx'))
                 ->setBody($this->renderView('mail/nueva.txt.twig', array('solicitud' => $solicitud)));
 
-            $mailer->send($message);
+            $mailer->send($message);*/
 
 
 //            return $this->redirectToRoute('app_solicitud_index', [], Response::HTTP_SEE_OTHER);
