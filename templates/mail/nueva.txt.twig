@@ -1,10 +1,8 @@
 Nueva solicitud
 
 Solicitante: {{ solicitud.solicitante|title }}
-
 {% set difference = date(solicitud.fin|date('Y/m/d')).diff(date(solicitud.inicio|date('Y/m/d'))) %}
 {% set duracion = difference.days + 1 %}
-
 Periodo de la solicitud: {{ solicitud.inicio|format_datetime('long', 'none', locale='es') }} a {{ solicitud.fin|format_datetime('long', 'none', locale='es') }}
 
 (duración de {{ duracion }} {{ duracion == 1 ? 'día' : 'días' }})
