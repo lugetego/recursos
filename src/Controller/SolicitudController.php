@@ -22,7 +22,7 @@ class SolicitudController extends AbstractController
     public function index(SolicitudRepository $solicitudRepository): Response
     {
         return $this->render('solicitud/index.html.twig', [
-            'solicituds' => $solicitudRepository->findAll(),
+            'solicituds' => $solicitudRepository->findBy(["impresa"=>true]),
         ]);
     }
 
