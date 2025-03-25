@@ -119,7 +119,10 @@
 
                 <p class="card-text">
                     {% if solicitud.fuente not in ['CCM', 'Ingresos extraordinarios'] %}
-                        <strong>Número de proyecto:</strong> <br>
+                        <strong>Número de proyecto:</strong>
+                        <span style="display: inline-block; border-bottom: 1px solid gray; min-width: 100px;">
+                            {{ solicitud.p }}
+                     </span>
                     {% endif %}
                     <strong>Tutor(a) o Asesor(a) del solicitante:</strong> {{ solicitud.tutor }}<br>
                     {% if solicitud.fuente not in ['CCM', 'Ingresos extraordinarios'] %}

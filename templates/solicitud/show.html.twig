@@ -28,14 +28,13 @@
                 <a class="btn btn-dark" id="printPageButton" href="{{ path('app_solicitud_pdf',{'id': solicitud.id}) }}" role="button">
                     <i class="fa-regular fa-file-pdf"></i> Generar PDF
                 </a>
-            </div>            <div class="card border-0">
+            </div>
+            <div class="card border-0">
                 <div class="card-body">
                     <h5 class="card-title">Solicitud de recursos - {{solicitud.fuente }} </h5>
 
                     <h5 class="card-subtitle mt-4 mb-2 text-muted">{{solicitud.solicitante }} </h5>
-                    {#
-                    <h6 class="card-subtitle mb-2 text-muted">Fecha de la solicitud: {{solicitud.fecha|format_datetime('long', 'none', locale='es')  }} </h6>
-                    #}
+
                     <p class="card-text">
                         {% if solicitud.fuente != "CCM" and solicitud.fuente != "Ingresos extraordinarios"%}
                             <strong>Número de proyecto:</strong> <br>

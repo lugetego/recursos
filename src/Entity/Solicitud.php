@@ -48,6 +48,11 @@ class Solicitud
     private $acta;
 
     /**
+     * @ORM\Column(type="string", length=255, nullable=true)
+     */
+    private $numproyecto;
+
+    /**
      * @ORM\Column(type="float")
      * @Assert\Type(
      *     type="float",
@@ -425,6 +430,25 @@ class Solicitud
     {
         $this->token = substr(bin2hex(random_bytes(4)), 0, 8); // genera un token aleatorio de 8 caracteres
     }
+
+    /**
+     * @return mixed
+     */
+    public function getNumproyecto()
+    {
+        return $this->numproyecto;
+    }
+
+    /**
+     * @param mixed $numproyecto
+     */
+    public function setNumproyecto($numproyecto): void
+    {
+        $this->numproyecto = $numproyecto;
+    }
+
+
+
 
 
 
