@@ -21,10 +21,12 @@
                     <a class="btn btn-dark me-2" id="showButton" href="{{ path('app_solicitud_index') }}" role="button">
                         <i class="fa-regular fa-list-alt"></i> Ver todas
                     </a>
-                {% endif %}
+
                 <a class="btn btn-dark me-2" id="editButton" href="{{ path('app_solicitud_edit',{'slug': solicitud.slug}) }}" role="button">
                     <i class="fa-regular fa-edit"></i> Modificar
                 </a>
+                {% endif %}
+
                 <a class="btn btn-dark" id="printPageButton" href="{{ path('app_solicitud_pdf',{'id': solicitud.id}) }}" role="button">
                     <i class="fa-regular fa-file-pdf"></i> Generar PDF
                 </a>

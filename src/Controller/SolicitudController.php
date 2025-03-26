@@ -65,16 +65,20 @@ class SolicitudController extends AbstractController
         $solicitudRepository->add($solicitud, true);
 
 
+
         return new Response(
             $this->knpSnappy->getOutputFromHtml($html, $pdfOptions),
             200,
             [
                 'Content-Type'        => 'application/pdf',
-                'Content-Disposition' => sprintf('attachment; filename="%s"', $filename),
-
+                'Content-Disposition' => sprintf('inline; filename="%s"', $filename),
             ]
 
         );
+
+
+
+
 
 
     }
