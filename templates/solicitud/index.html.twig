@@ -53,6 +53,11 @@
         </tbody>
     </table>
 
+    {% if is_granted('ROLE_ADMIN') %}
+        <a class="btn btn-dark btn-sm me-2" id="showButton" href="{{ path('app_solicitud_new') }}" role="button">
+            <i class="fa-regular fa-plus-square"></i> Nueva solicitud        </a>
+
+    {% endif %}
 {% endblock %}
 {% block javascripts %}
 

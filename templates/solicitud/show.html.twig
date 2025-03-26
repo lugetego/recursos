@@ -19,16 +19,23 @@
             <div class="col-12 d-flex justify-content-end align-items-center mt-2">
                 {% if is_granted('ROLE_ADMIN') %}
                     <a class="btn btn-dark me-2" id="showButton" href="{{ path('app_solicitud_index') }}" role="button">
-                        <i class="fa-regular fa-list-alt"></i> Ver todas
+                        <i class="fas fa-list-ul"></i> Ver todas
                     </a>
 
-                <a class="btn btn-dark me-2" id="editButton" href="{{ path('app_solicitud_edit',{'slug': solicitud.slug}) }}" role="button">
-                    <i class="fa-regular fa-edit"></i> Modificar
-                </a>
+                    <a class="btn btn-dark me-2" id="editButton" href="{{ path('app_solicitud_edit', {'slug': solicitud.slug}) }}" role="button">
+                        <i class="fas fa-edit"></i> Modificar
+                    </a>
+
+                    <form method="post" action="{{ path('app_solicitud_delete', {'id': solicitud.id}) }}" onsubmit="return confirm('¿Estás seguro de eliminar esta solicitud?');" class="d-inline">
+                        <input type="hidden" name="_token" value="{{ csrf_token('delete' ~ solicitud.id) }}">
+                        <button class="btn btn-danger ">
+                            <i class="fas fa-trash-alt"></i> Eliminar
+                        </button>
+                    </form>
                 {% endif %}
 
-                <a class="btn btn-dark" id="printPageButton" href="{{ path('app_solicitud_pdf',{'id': solicitud.id}) }}" role="button">
-                    <i class="fa-regular fa-file-pdf"></i> Generar PDF
+                <a class="btn btn-dark ms-2" id="printPageButton" href="{{ path('app_solicitud_pdf', {'id': solicitud.id}) }}" role="button">
+                    <i class="fas fa-file-pdf"></i> Generar PDF
                 </a>
             </div>
             <div class="card border-0">
@@ -38,14 +45,14 @@
                     <h5 class="card-subtitle mt-4 mb-2 text-muted">{{solicitud.solicitante }} </h5>
 
                     <p class="card-text">
-                      {#  {% if solicitud.fuente != "CCM" and solicitud.fuente != "Ingresos extraordinarios"%}
+                        {#  {% if solicitud.fuente != "CCM" and solicitud.fuente != "Ingresos extraordinarios"%}
                             <strong>Número de proyecto:</strong> <br>
                         {%endif %}#}
                         <strong>Tutor(a) o Asesor(a) del solicitante:</strong> {{ solicitud.tutor }}<br>
                         {% if solicitud.fuente not in ['CCM', 'Ingresos extraordinarios'] %}
                             <strong>Persona responsable del proyecto:</strong> {{ solicitud.responsable }}<br>
                         {% endif %}
-                    {#    <strong>Acta del Consejo Interno:</strong> {{ solicitud.acta }}#}
+                        {#    <strong>Acta del Consejo Interno:</strong> {{ solicitud.acta }}#}
                     </p>
                     <p class="card-text">
                         <strong>Motivo de la solicitud:</strong> {{ solicitud.motivo|join(', ') }}
