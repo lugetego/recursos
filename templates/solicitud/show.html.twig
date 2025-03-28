@@ -133,22 +133,28 @@
         <br>
         <br>
         <div class="row pt-5">
-            <div class="col-5">
+            <div class="col-4">
                 {{ solicitud.solicitante }}
                 <div class="text-center">
-                    <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pb-2 mb-1 border-bottom"></div>
-                    <p class="text-muted small"> Persona solicitante (Nombre y firma)</p>
+                    <div class="border-bottom pb-2 mb-1" style="height: 2px;"></div>
+                    <p class="text-muted small">Persona solicitante (Nombre y firma)</p>
                 </div>
             </div>
-            <div class="col-2">
+            <div class="col-4">
+                {{ solicitud.tutor }}
+                <div class="text-center">
+                    <div class="border-bottom pb-2 mb-1" style="height: 2px;"></div>
+                    <p class="text-muted small">Tutor(a) o Asesor(a) (Nombre y firma)</p>
+                </div>
             </div>
-            <div class="col-5">
+            <div class="col-4">
                 <br>
                 <div class="text-center">
-                    <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pb-2 mb-1 border-bottom"></div>
+                    <div class="border-bottom pb-2 mb-1" style="height: 2px;"></div>
                     <p class="text-muted small">Director/Secretario Académico (Nombre y firma)</p>
                 </div>
             </div>
         </div>
+
     </div>
 {% endblock %}
