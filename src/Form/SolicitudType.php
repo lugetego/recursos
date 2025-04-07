@@ -75,9 +75,15 @@ class SolicitudType extends AbstractType
             ->add('tipoActividad', ChoiceType::class, [
                 'choices'  => [
                     'Asesoría'=>'Asesoría',
+                    'Coloquio'=>'Coloquio',
                     'Conferencia'=> 'Conferencia',
                     'Congreso'=> 'Congreso',
+                    'Curso'=> 'Curso',
+                    'Feria'=> 'Feria',
+                    'Jornada'=> 'Jornada',
                     'Póster'=>'Póster',
+                    'Seminario'=> 'Seminario',
+                    'Taller'=> 'Taller',
                     'Trabajo de Investigación'=>'Trabajo de Investigación',
                 ],
                 'placeholder' => 'Seleccionar',
