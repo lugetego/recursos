@@ -75,13 +75,8 @@ class SolicitudController extends AbstractController
             ]
 
         );
-
-
-
-
-
-
     }
+
     /**
      * @Route("/new", name="app_solicitud_new", methods={"GET", "POST"})
      */

@@ -35,6 +35,7 @@ class SolicitudType extends AbstractType
                 'placeholder' => 'Seleccionar',
             ])
             ->add('solicitante')
+            ->add('anfitrion')
             ->add('responsable', TextType::class, [
                 'required' => false,  // Makes the field required
                 'label' => 'Persona responsable del proyecto', ]) // Optional: Add a label if you need one

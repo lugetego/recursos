@@ -99,7 +99,6 @@
     </div>
     <div class="row mt-2">
         <p class="small text-primary" id="participacion"></p>
-
         <div class="col-6">
             <div class="form-floating">
                 {{ form_widget(form.tipoActividad, {'attr': {'class': 'form-control','placeholder':'Tipo de actividad'}}) }}
@@ -120,6 +119,14 @@
                 {{ form_label(form.institucion,'Institución en la que se realizará la actividad') }}
             </div>
         </div>
+        <div class="col-6">
+            <div class="form-floating">
+                {{ form_widget(form.anfitrion, {'attr': {'class': 'form-control','placeholder':'Anfitrión'}}) }}
+                {{ form_label(form.anfitrion,'Anfitrión') }}
+            </div>
+        </div>
+    </div>
+    <div class="row mt-2">
         <div class="col-6">
             <div class="form-floating">
                 {{ form_widget(form.lugar, {'attr': {'class': 'form-control','placeholder':'Ciudad y país donde se realizará la actividad'}}) }}

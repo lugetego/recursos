@@ -49,6 +49,11 @@ class Solicitud
     private $solicitante;
 
     /**
+     * @ORM\Column(type="string", length=255)
+     */
+    private $anfitrion;
+
+    /**
      * @ORM\Column(type="string", length=255, nullable=true)
      */
     private $acta;
@@ -468,6 +473,23 @@ class Solicitud
     {
         $this->impresa = $impresa;
     }
+
+    /**
+     * @return mixed
+     */
+    public function getAnfitrion()
+    {
+        return $this->anfitrion;
+    }
+
+    /**
+     * @param mixed $anfitrion
+     */
+    public function setAnfitrion($anfitrion): void
+    {
+        $this->anfitrion = $anfitrion;
+    }
+
 
 
 
