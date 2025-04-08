@@ -45,7 +45,7 @@
                     </form>
                 {% endif %}
 
-                {% if solicitud.validada == '1' %}
+                {% if solicitud.validada == '1' or is_granted('ROLE_ADMIN') %}
                     <a class="btn btn-dark me-2" id="editButton" href="{{ path('app_solicitud_edit', {'slug': solicitud.slug}) }}" role="button">
                         <i class="fas fa-edit"></i> Modificar
                     </a>
