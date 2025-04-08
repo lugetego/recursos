@@ -42,7 +42,7 @@
                 <div class="card-body">
                     <h5 class="card-title">Solicitud de recursos - {{solicitud.fuente }} </h5>
 
-                    <h5 class="card-subtitle mt-4 mb-2 text-muted">{{solicitud.solicitante }} </h5>
+                    <h5 class="card-subtitle mt-4 mb-2 text-muted">{{solicitud.solicitante }}, <em><small>{{ solicitud.mail}}</small></em> </h5>
 
                     <p class="card-text">
                         {#  {% if solicitud.fuente != "CCM" and solicitud.fuente != "Ingresos extraordinarios"%}

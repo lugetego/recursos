@@ -15,8 +15,9 @@
 
     <div class="mt-2">
         <hr>
-        <p class="lead">Una vez capturada la información es necesario imprimir el formato y entregarlo a la Secretaría Académica.</p>
-
+        <p class="lead"><strong>Una vez capturada la información es necesario imprimir el formato y entregarlo a
+                la Secretaría Académica.</strong>
+        </p>
     </div>
 
     <div class="row">
@@ -51,6 +52,33 @@
         </div>
     </div>
     <div class="row mt-2">
+
+        <div class="col col-md-6 col-sm-12">
+            <div class="col-12">
+                <div class="form-floating">
+                    {{ form_widget(form.mail.first, {'attr': {'class': 'form-control','placeholder':'Correo del solicitante'}}) }}
+                    {{ form_label(form.mail.first,'Correo solicitante') }}
+                </div>
+                <div class="invalid-error invalid-feedback">
+                    {{ form_errors(form.mail.first) }}
+                </div>
+            </div>
+        </div>
+        <div class="col col-md-6 col-sm-12">
+            <div class="col-12">
+                <div class="form-floating">
+                    {{ form_widget(form.mail.second, {'attr': {'class': 'form-control','placeholder':'Correo del solicitante'}}) }}
+                    {{ form_label(form.mail.second,'Confirma correo solicitante') }}
+                </div>
+                <div class="invalid-error invalid-feedback">
+                    {{ form_errors(form.mail.second) }}
+                </div>
+            </div>
+        </div>
+
+
+    </div>
+    <div class="row mt-2">
         <div class="col-12">
             <div class="form-floating">
                 {{ form_widget(form.tutor, {'attr': {'class': 'form-control','placeholder':'Nombre del solicitante'}}) }}
@@ -59,7 +87,7 @@
         </div>
     </div>
     <div class="mt-4">
-        <div class="alert alert-primary" role="alert">
+        <div class="alert alert-warning" role="alert">
             Las fechas de inicio y fin deben seleccionarse incluyendo los días de traslado necesarios para llevar a cabo la actividad.
         </div>
     </div>
@@ -134,8 +162,12 @@
             </div>
         </div>
     </div>
-    <div class="row mt-2">
-        <p class="lead">Capturar el importe solicitado por cada rubro a cubrir.</p>
+    <div class="row mt-4">
+        <p class="lead"><strong>Capturar el importe solicitado por cada rubro a cubrir.</strong></p>
+
+        <div class="alert alert-warning" role="alert">
+            La tarifa diaria es de $1,580 y no deberá rebasar los $5,000 autorizados al año.
+        </div>
     </div>
     <div class="row mt-2">
         <div class="col-6">

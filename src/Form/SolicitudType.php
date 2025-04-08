@@ -8,6 +8,7 @@ use Symfony\Component\Form\Extension\Core\Type\CheckboxType;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\Extension\Core\Type\DateType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
+use Symfony\Component\Form\Extension\Core\Type\RepeatedType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Validator\Constraints as Assert;
@@ -70,6 +71,10 @@ class SolicitudType extends AbstractType
             )
             ->add('institucion')
             ->add('lugar')
+            ->add('mail', RepeatedType::class, [
+                'invalid_message' => 'Los correos no son iguales',
+                'first_options'  => ['label' => 'Correo'],
+                'second_options' => ['label' => 'Confirma correo']])
 
 
             ->add('tipoActividad', ChoiceType::class, [

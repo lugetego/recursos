@@ -49,6 +49,13 @@ class Solicitud
     private $solicitante;
 
     /**
+     * @ORM\Column(type="string", length=255, nullable=true)
+     * @Assert\Email(
+     *     message = "El correo '{{ value }}' no es una dirección válida.")
+     */
+    private $mail;
+
+    /**
      * @ORM\Column(type="string", length=255)
      */
     private $anfitrion;
@@ -489,6 +496,24 @@ class Solicitud
     {
         $this->anfitrion = $anfitrion;
     }
+
+    /**
+     * @return mixed
+     */
+    public function getMail()
+    {
+        return $this->mail;
+    }
+
+    /**
+     * @param mixed $mail
+     */
+    public function setMail($mail): void
+    {
+        $this->mail = $mail;
+    }
+
+
 
 
 
