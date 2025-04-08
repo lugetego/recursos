@@ -22,9 +22,9 @@
                         <i class="fas fa-list-ul"></i> Ver todas
                     </a>
 
-                    <a class="btn btn-dark me-2" id="editButton" href="{{ path('app_solicitud_edit', {'slug': solicitud.slug}) }}" role="button">
+                   {# <a class="btn btn-dark me-2" id="editButton" href="{{ path('app_solicitud_edit', {'slug': solicitud.slug}) }}" role="button">
                         <i class="fas fa-edit"></i> Modificar
-                    </a>
+                    </a>#}
 
                     <div {{ stimulus_controller('modal-form', {
                         formUrl: path('app_solicitud_validacion',{'slug':solicitud.slug})
