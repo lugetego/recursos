@@ -38,6 +38,11 @@ class Solicitud
     private $impresa;
 
     /**
+     * @ORM\Column(type="boolean", nullable=true)
+     */
+    private $validada;
+
+    /**
      * @ORM\Column(type="date")
      */
     private $fecha;
@@ -156,6 +161,10 @@ class Solicitud
      */
     private $tcProyecto;
 
+    /**
+     * @ORM\Column(type="text", length=6000, nullable=true)
+     */
+    private $observaciones;
 
     /**
      * @ORM\Column(type="string", length=255)
@@ -513,8 +522,37 @@ class Solicitud
         $this->mail = $mail;
     }
 
+    /**
+     * @return mixed
+     */
+    public function getObservaciones()
+    {
+        return $this->observaciones;
+    }
 
+    /**
+     * @param mixed $observaciones
+     */
+    public function setObservaciones($observaciones): void
+    {
+        $this->observaciones = $observaciones;
+    }
 
+    /**
+     * @return mixed
+     */
+    public function getValidada()
+    {
+        return $this->validada;
+    }
+
+    /**
+     * @param mixed $validada
+     */
+    public function setValidada($validada): void
+    {
+        $this->validada = $validada;
+    }
 
 
 

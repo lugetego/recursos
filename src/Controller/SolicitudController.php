@@ -4,11 +4,13 @@ namespace App\Controller;
 
 use App\Entity\Solicitud;
 use App\Form\SolicitudType;
+use App\Form\ValidacionType;
 use App\Repository\SolicitudRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use Doctrine\ORM\EntityManagerInterface;
 use Knp\Bundle\SnappyBundle\Snappy\Response\PdfResponse;
 
 /**
@@ -22,8 +24,7 @@ class SolicitudController extends AbstractController
     public function index(SolicitudRepository $solicitudRepository): Response
     {
         return $this->render('solicitud/index.html.twig', [
-            'solicituds' => $solicitudRepository->findBy(
-                ["impresa" => true],
+            'solicituds' => $solicitudRepository->findAll(
                 ["id" => "DESC"]
             ),
         ]);
@@ -64,8 +65,6 @@ class SolicitudController extends AbstractController
         $solicitud->setImpresa(true);
         $solicitudRepository->add($solicitud, true);
 
-
-
         return new Response(
             $this->knpSnappy->getOutputFromHtml($html, $pdfOptions),
             200,
@@ -96,6 +95,16 @@ class SolicitudController extends AbstractController
 
             $solicitud->setFecha(new \DateTime());
             $solicitudRepository->add($solicitud, true);
+
+            // Mail
+            $message = (new \Swift_Message('Solicitud de recursos - Prácticas escolares'))
+                ->setFrom('webmaster@matmor.unam.mx')
+                ->setTo(array($solicitud->getMail()))
+                //->setCc('vorozco@matmor.unam.mx')
+                ->setBcc(array('gerardo@matmor.unam.mx'))
+                ->setBody($this->renderView('mail/nueva.txt.twig', array('solicitud' => $solicitud)));
+
+            $mailer->send($message);
 
 //            return $this->redirectToRoute('app_solicitud_index', [], Response::HTTP_SEE_OTHER);
             return $this->redirectToRoute('app_solicitud_show', [
@@ -162,4 +171,44 @@ class SolicitudController extends AbstractController
 
         return $this->redirectToRoute('app_solicitud_index', [], Response::HTTP_SEE_OTHER);
     }
+
+    /**
+     * @Route("/{slug}/validacion", name="app_solicitud_validacion", methods={"GET", "POST"})
+     */
+    public function validacion(Request $request, Solicitud $solicitud, EntityManagerInterface $entityManager,  \Swift_Mailer $mailer): Response
+    {
+        $form = $this->createForm(ValidacionType::class, $solicitud);
+        $form->handleRequest($request);
+
+        if ($form->isSubmitted() && $form->isValid()) {
+            $entityManager->persist($solicitud);
+            $entityManager->flush();
+
+            if ($solicitud->getValidada() == '1' ) {
+
+                // Mail
+                $message = (new \Swift_Message('Solicitud de recursos - Prácticas escolares'))
+                    ->setFrom('webmaster@matmor.unam.mx')
+                    ->setTo(array($solicitud->getMail()))
+                    //->setCc('vorozco@matmor.unam.mx')
+                    ->setBcc(array('gerardo@matmor.unam.mx'))
+                    ->setBody($this->renderView('mail/validada.txt.twig', array('solicitud' => $solicitud)));
+
+                $mailer->send($message);
+            }
+
+
+
+            return $this->redirectToRoute('app_solicitud_show', ['slug'=>$solicitud->getSlug()], Response::HTTP_SEE_OTHER);
+
+        }
+        $template = $request->isXmlHttpRequest() ? '_valida.html.twig' : 'show.html.twig';
+
+
+        return $this->renderForm('solicitud/'.$template, [
+            'solicitud' => $solicitud,
+            'form' => $form,
+        ]);
+    }
+
 }

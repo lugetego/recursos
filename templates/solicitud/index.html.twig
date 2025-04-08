@@ -39,9 +39,10 @@
                 <td>{{ solicitud.tcProyecto }}</td>
                 <td>{{ solicitud.taProyecto }}</td>
                 <td>
-                    <a href="{{ path('app_solicitud_show', {'slug': solicitud.slug}) }}"><i class="fa fa-search"></i></a>
                     {% if is_granted('ROLE_ADMIN') %}
-                    <a href="{{ path('app_solicitud_edit', {'slug': solicitud.slug}) }}"><i class="fa-regular fa-edit"></i></a>
+                        <a href="{{ path('app_solicitud_show', {'slug': solicitud.slug}) }}"><i class="fa fa-search"></i></a>
+
+{#                        <a href="{{ path('app_solicitud_edit', {'slug': solicitud.slug}) }}"><i class="fa-regular fa-edit"></i></a>#}
                     {% endif %}
                 </td>
             </tr>

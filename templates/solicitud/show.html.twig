@@ -26,20 +26,52 @@
                         <i class="fas fa-edit"></i> Modificar
                     </a>
 
+                    <div {{ stimulus_controller('modal-form', {
+                        formUrl: path('app_solicitud_validacion',{'slug':solicitud.slug})
+                    }) }}>
+                        <button class="btn btn-success me-2" data-action="modal-form#openModal">
+                            <i class="fas fa-check"></i> Validar
+                        </button>
+                        {{ include('solicitud/_modal.html.twig', {
+                            modalTitle: 'Validar solicitud',
+                        }) }}
+                    </div>
+
                     <form method="post" action="{{ path('app_solicitud_delete', {'id': solicitud.id}) }}" onsubmit="return confirm('¿Estás seguro de eliminar esta solicitud?');" class="d-inline">
                         <input type="hidden" name="_token" value="{{ csrf_token('delete' ~ solicitud.id) }}">
-                        <button class="btn btn-danger ">
+                        <button class="btn btn-danger me-2">
                             <i class="fas fa-trash-alt"></i> Eliminar
                         </button>
                     </form>
                 {% endif %}
 
-                <a class="btn btn-dark ms-2" id="printPageButton" href="{{ path('app_solicitud_pdf', {'id': solicitud.id}) }}" role="button">
-                    <i class="fas fa-file-pdf"></i> Generar PDF
-                </a>
+                {% if solicitud.validada == '1' %}
+                    <a class="btn btn-dark me-2" id="editButton" href="{{ path('app_solicitud_edit', {'slug': solicitud.slug}) }}" role="button">
+                        <i class="fas fa-edit"></i> Modificar
+                    </a>
+                    <a class="btn btn-dark ms-2" id="printPageButton" href="{{ path('app_solicitud_pdf', {'id': solicitud.id}) }}" role="button">
+                        <i class="fas fa-file-pdf"></i> Generar PDF
+                    </a>
+                {% endif %}
             </div>
             <div class="card border-0">
+
+
+
                 <div class="card-body">
+                    <div class="alert alert-primary" role="alert">
+
+                        {% if solicitud.validada == "" %}
+                            La información de la solicitud no ha sido validada
+                            <br>
+                        {% else  %}
+                            {{ solicitud.observaciones ?: 'Sin observaciones' }}
+                        {% endif %}
+                        </p>
+                    </div>
+
+
+
                     <h5 class="card-title">Solicitud de recursos - {{solicitud.fuente }} </h5>
 
                     <h5 class="card-subtitle mt-4 mb-2 text-muted">{{solicitud.solicitante }}, <em><small>{{ solicitud.mail}}</small></em> </h5>

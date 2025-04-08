@@ -1,0 +1,34 @@
+
+{% block header %}
+{% endblock  %}
+
+{% block body %}
+    {{ form_start(form, {'action': path('app_solicitud_validacion', { 'slug': solicitud.slug})}) }}
+    <div class="row ">
+        <label for="observaciones" class="form-label">{{ form_label(form.observaciones) }}</label>
+        <div>
+            {{ form_widget(form.observaciones,{
+                'attr': {'class': 'form-control',
+                    'placeholder': 'Observaciones',
+                    'rows':'5',
+                } } ) }}
+        </div>
+        <div class="invalid-error">
+            {{ form_errors(form.observaciones) }}
+        </div>
+    </div>
+
+    <div class="row pt-2">
+        <div class="col col-md-4 col-sm-12">
+            {{ form_label(form.validada,'Validar y enviar notificación') }}
+
+            {{ form_widget(form.validada)}}
+        </div>
+
+    </div>
+    <hr class="my-4">
+    <button class="w-100 btn btn-dark">
+        <i class="fas fa-save"></i> {{ button_label|default('Guardar') }}
+    </button>    {{ form_widget(form) }}
+    {{ form_end(form) }}
+{% endblock %}
