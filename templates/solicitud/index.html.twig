@@ -71,7 +71,9 @@
     $(document).ready(function() {
         $('#example').DataTable(
             {
-                order: [[ 0, 'desc' ]]
+                order: [[ 0, 'desc' ]],
+                pageLength: 20  // Set default rows per page to 20
+
             }
         );
     } );
