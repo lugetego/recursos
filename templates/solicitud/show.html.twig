@@ -65,7 +65,7 @@
                             La información de la solicitud no ha sido validada
                             <br>
                         {% else  %}
-                            {{ solicitud.observaciones ?: 'Sin observaciones' }}
+                            {{ solicitud.observaciones|nl2br ?: 'Sin observaciones' }}
                         {% endif %}
                         </p>
                     </div>
