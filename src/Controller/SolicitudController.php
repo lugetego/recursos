@@ -53,7 +53,7 @@ class SolicitudController extends AbstractController
             'margin-left'   => 10,
         );
 
-        // Mail
+       /* // Mail
         $message = (new \Swift_Message('Solicitud de recursos - Prácticas escolares'))
             ->setFrom('webmaster@matmor.unam.mx')
             ->setTo('vorozco@matmor.unam.mx')
@@ -63,7 +63,7 @@ class SolicitudController extends AbstractController
         $mailer->send($message);
 
         $solicitud->setImpresa(true);
-        $solicitudRepository->add($solicitud, true);
+        $solicitudRepository->add($solicitud, true);*/
 
         return new Response(
             $this->knpSnappy->getOutputFromHtml($html, $pdfOptions),
@@ -100,7 +100,7 @@ class SolicitudController extends AbstractController
             $message = (new \Swift_Message('Solicitud de recursos - Prácticas escolares'))
                 ->setFrom('webmaster@matmor.unam.mx')
                 ->setTo(array($solicitud->getMail()))
-                //->setCc('vorozco@matmor.unam.mx')
+                ->setCc('vorozco@matmor.unam.mx')
                 ->setBcc(array('gerardo@matmor.unam.mx'))
                 ->setBody($this->renderView('mail/nueva.txt.twig', array('solicitud' => $solicitud)));
 
@@ -190,7 +190,7 @@ class SolicitudController extends AbstractController
                 $message = (new \Swift_Message('Solicitud de recursos - Prácticas escolares'))
                     ->setFrom('webmaster@matmor.unam.mx')
                     ->setTo(array($solicitud->getMail()))
-                    //->setCc('vorozco@matmor.unam.mx')
+                    ->setCc('vorozco@matmor.unam.mx')
                     ->setBcc(array('gerardo@matmor.unam.mx'))
                     ->setBody($this->renderView('mail/validada.txt.twig', array('solicitud' => $solicitud)));
 
