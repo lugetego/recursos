@@ -103,6 +103,8 @@ class SolicitudType extends AbstractType
             ->add('taCCM')
             ->add('taProyecto')
             ->add('tcProyecto')
+            ->add('taIngresos')
+            ->add('tcIngresos')
             ->add('solicitante')
 
         ;

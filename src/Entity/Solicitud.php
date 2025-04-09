@@ -159,6 +159,22 @@ class Solicitud
      *     type="float",
      *     message="The value {{ value }} is not a valid {{ type }}.")
      */
+    private $tcIngresos;
+
+    /**
+     * @ORM\Column(type="float", nullable=true)
+     * @Assert\Type(
+     *     type="float",
+     *     message="The value {{ value }} is not a valid {{ type }}.")
+     */
+    private $taIngresos;
+
+    /**
+     * @ORM\Column(type="float", nullable=true)
+     * @Assert\Type(
+     *     type="float",
+     *     message="The value {{ value }} is not a valid {{ type }}.")
+     */
     private $tcProyecto;
 
     /**
@@ -554,6 +570,37 @@ class Solicitud
         $this->validada = $validada;
     }
 
+    /**
+     * @return mixed
+     */
+    public function getTcIngresos()
+    {
+        return $this->tcIngresos;
+    }
+
+    /**
+     * @param mixed $tcIngresos
+     */
+    public function setTcIngresos($tcIngresos): void
+    {
+        $this->tcIngresos = $tcIngresos;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getTaIngresos()
+    {
+        return $this->taIngresos;
+    }
+
+    /**
+     * @param mixed $taIngresos
+     */
+    public function setTaIngresos($taIngresos): void
+    {
+        $this->taIngresos = $taIngresos;
+    }
 
 
 }

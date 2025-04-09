@@ -22,7 +22,7 @@
                         <i class="fas fa-list-ul"></i> Ver todas
                     </a>
 
-                   {# <a class="btn btn-dark me-2" id="editButton" href="{{ path('app_solicitud_edit', {'slug': solicitud.slug}) }}" role="button">
+                    {# <a class="btn btn-dark me-2" id="editButton" href="{{ path('app_solicitud_edit', {'slug': solicitud.slug}) }}" role="button">
                         <i class="fas fa-edit"></i> Modificar
                     </a>#}
 
@@ -124,22 +124,45 @@
                             <strong>Recursos solicitados</strong>
                         </p>
                         <table class="table table-border w-50 align-items-center" cellspacing="0" >
+                            <tbody>
+
+                            {% if solicitud.tcCCM != 0 %}
+                                <tr>
+                                    <th scope="row">Prácticas escolares (CCM)</th>
+                                    <td class="text-right">${{ solicitud.tcCCM|number_format(2)}}</td>
+                                </tr>
+                            {% endif %}
+                            {% if solicitud.tcProyecto != 0 %}
                             <tr>
-                                <th scope="col">Prácticas escolares (proyecto)</th>
+                                <th scope="col">Prácticas escolares (Proyecto)</th>
                                 <td class="text-right">${{ solicitud.tcProyecto|number_format(2)}}</td>
                             </tr>
-                            <tbody>
+                            {% endif %}
+                            {% if solicitud.tcIngresos != 0 %}
                             <tr>
-                                <th scope="row">Prácticas escolares (CCM)</th>
-                                <td class="text-right">${{ solicitud.tcCCM|number_format(2)}}</td>
+                                <th scope="row">Prácticas escolares (Ingresos Ext.)</th>
+                                <td class="text-right">${{ solicitud.tcIngresos|number_format(2)}}</td>
                             </tr>
-                            <tr>
-                                <th scope="row">Transporte aéreo (proyecto)</th>
-                                <td class="text-right">${{ solicitud.taProyecto|number_format(2)}}</td>
-                            </tr>
+                            {% endif %}
+                            {% if solicitud.taCCM != 0 %}
                             <tr>
                                 <th scope="row">Transporte aéreo (CCM)</th>
                                 <td class="text-right">${{ solicitud.taCCM|number_format(2)}}</td>
+                            </tr>
+                            {% endif %}
+                            {% if solicitud.taProyecto != 0 %}
+                            <tr>
+                                <th scope="row">Transporte aéreo (Proyecto)</th>
+                                <td class="text-right">${{ solicitud.taProyecto|number_format(2)}}</td>
+                            </tr>
+                            {% endif %}
+                            {% if solicitud.taIngresos != 0 %}
+                            <tr>
+                                <th scope="row">Transporte aéreo (Ingresos Ext.)</th>
+                                <td class="text-right">${{ solicitud.taIngresos|number_format(2)}}</td>
+                            </tr>
+                            {% endif %}
+
                             <tr class="bg-light">
                                 <th scope="row">Total (MXP)</th>
                                 <td class="text-right ">${{ solicitud.importe|number_format(2)}}</td>

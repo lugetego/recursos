@@ -173,31 +173,11 @@
         <div class="col-6">
             <div class="input-group mb-3">
                 <span class="input-group-text">$</span>
-                {{ form_widget(form.tcProyecto, {'attr': {'class': 'form-control','placeholder':'Importe','name':'add'}}) }}
-                <span class="input-group-text importe">Prácticas escolares (Proyecto)</span>
-            </div>
-            <div class="invalid-error">
-                {{ form_errors(form.tcProyecto) }}
-            </div>
-        </div>
-        <div class="col-6">
-            <div class="input-group mb-3">
-                <span class="input-group-text">$</span>
                 {{ form_widget(form.tcCCM, {'attr': {'class': 'form-control','placeholder':'Importe'}}) }}
                 <span class="input-group-text importe">Prácticas escolares (CCM)</span>
             </div>
             <div class="invalid-error">
                 {{ form_errors(form.tcCCM) }}
-            </div>
-        </div>
-        <div class="col-6">
-            <div class="input-group mb-3">
-                <span class="input-group-text">$</span>
-                {{ form_widget(form.taProyecto, {'attr': {'class': 'form-control','placeholder':'Importe','value': solicitud.taProyecto }}) }}
-                <span class="input-group-text importe">Transporte aéreo (Proyecto) {{ solicitud.taProyecto }}</span>
-            </div>
-            <div class="invalid-error">
-                {{ form_errors(form.taProyecto) }}
             </div>
         </div>
         <div class="col-6">
@@ -210,6 +190,50 @@
                 {{ form_errors(form.taCCM) }}
             </div>
         </div>
+        <div class="col-6">
+            <div class="input-group mb-3">
+                <span class="input-group-text">$</span>
+                {{ form_widget(form.tcProyecto, {'attr': {'class': 'form-control','placeholder':'Importe','name':'add'}}) }}
+                <span class="input-group-text importe">Prácticas escolares (Proyecto)</span>
+            </div>
+            <div class="invalid-error">
+                {{ form_errors(form.tcProyecto) }}
+            </div>
+        </div>
+        <div class="col-6">
+            <div class="input-group mb-3">
+                <span class="input-group-text">$</span>
+                {{ form_widget(form.taProyecto, {'attr': {'class': 'form-control','placeholder':'Importe','value': solicitud.taProyecto }}) }}
+                <span class="input-group-text importe">Transporte aéreo (Proyecto) </span>
+            </div>
+            <div class="invalid-error">
+                {{ form_errors(form.taProyecto) }}
+            </div>
+        </div>
+        <div class="col-6">
+            <div class="input-group mb-3">
+                <span class="input-group-text">$</span>
+                {{ form_widget(form.tcIngresos, {'attr': {'class': 'form-control','placeholder':'Importe'}}) }}
+                <span class="input-group-text importe">Prácticas Escolares (Ingresos Ext.)</span>
+            </div>
+            <div class="invalid-error">
+                {{ form_errors(form.tcIngresos) }}
+            </div>
+        </div>
+
+
+
+        <div class="col-6">
+            <div class="input-group mb-3">
+                <span class="input-group-text">$</span>
+                {{ form_widget(form.taIngresos, {'attr': {'class': 'form-control','placeholder':'Importe','value': solicitud.taIngresos }}) }}
+                <span class="input-group-text importe">Transporte aéreo (Ingresos Ext.) </span>
+            </div>
+            <div class="invalid-error">
+                {{ form_errors(form.taIngresos) }}
+            </div>
+        </div>
+
     </div>
     <hr>
     <div class="row ">
