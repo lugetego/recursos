@@ -97,6 +97,9 @@ class SolicitudType extends AbstractType
             ->add('tituloActividad', TextType::class, [
                 'required' => true,  // Makes the field required
                 'label' => 'Título de la actividad', ]) // Optional: Add a label if you need one
+            ->add('evento', TextType::class, [
+                'required' => true,  // Makes the field required
+                'label' => 'Nombre del evento (Si aplica)', ]) // Optional: Add a label if you need one
             ->add('importe')
 
             ->add('tcCCM')

@@ -130,6 +130,11 @@ class Solicitud
     private $tituloActividad;
 
     /**
+     * @ORM\Column(type="string", length=1000, nullable=true)
+     */
+    private $evento;
+
+    /**
      * @ORM\Column(type="float", nullable=true)
      * @Assert\Type(
      *     type="float",
@@ -601,6 +606,23 @@ class Solicitud
     {
         $this->taIngresos = $taIngresos;
     }
+
+    /**
+     * @return mixed
+     */
+    public function getEvento()
+    {
+        return $this->evento;
+    }
+
+    /**
+     * @param mixed $evento
+     */
+    public function setEvento($evento): void
+    {
+        $this->evento = $evento;
+    }
+
 
 
 }
