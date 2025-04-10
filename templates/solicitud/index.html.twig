@@ -14,6 +14,7 @@
     <table id="example" class="mt-5 table table-striped" style="width:100%">
         <thead>
         <tr class="text-center">
+            <th>Id</th>
             <th>Fecha de solicitud</th>
             <th>Solicitante</th>
             <th>Inicio</th>
@@ -32,6 +33,7 @@
         <tbody>
         {% for solicitud in solicituds %}
             <tr>
+                <td>{{ solicitud.id }}</td>
                 <td>{{ solicitud.fecha ? solicitud.fecha|format_datetime('long', 'none', locale='es') }}</td>
                 <td>{{ solicitud.solicitante }}</td>
                 <td>{{ solicitud.inicio ? solicitud.inicio|format_datetime('long', 'none', locale='es') }}</td>
@@ -83,11 +85,15 @@
     $(document).ready(function() {
         $('#example').DataTable(
             {
-                order: [[ 0, 'asc' ]],
+                order: [[ 0, 'desc' ]],
                 pageLength: 25,  // Set default rows per page to 20
 
                 columnDefs: [
-                    { type: 'date', targets: 0 } // Asegura que la columna 0 se trata como fecha
+                    {
+                        targets: 0,        // índice de la columna a ocultar
+                        visible: false,    // la oculta
+                        searchable: false  // opcional: evita que se busque en esa columna
+                    }
                 ]
             }
         );
