@@ -34,7 +34,13 @@
         {% for solicitud in solicituds %}
             <tr>
                 <td>{{ solicitud.id }}</td>
-                <td>{{ solicitud.fecha ? solicitud.fecha|format_datetime('long', 'none', locale='es') }}</td>
+                <td>
+                    {% if is_granted('ROLE_ADMIN') %}
+                        <a href="{{ path('app_solicitud_show', {'slug': solicitud.slug}) }}">
+                            {{ solicitud.fecha ? solicitud.fecha|format_datetime('long', 'none', locale='es') }}
+                        </a>
+                    {% endif %}
+                </td>
                 <td>{{ solicitud.solicitante }}</td>
                 <td>{{ solicitud.inicio ? solicitud.inicio|format_datetime('long', 'none', locale='es') }}</td>
                 <td>{{ solicitud.fin ? solicitud.fin|format_datetime('long', 'none', locale='es') }}</td>
