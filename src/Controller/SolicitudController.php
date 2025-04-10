@@ -190,7 +190,7 @@ class SolicitudController extends AbstractController
                 $message = (new \Swift_Message('Solicitud de recursos - Prácticas escolares'))
                     ->setFrom('webmaster@matmor.unam.mx')
                     ->setTo(array($solicitud->getMail()))
-                    ->setCc('vorozco@matmor.unam.mx')
+                    //->setCc('vorozco@matmor.unam.mx')
                     ->setBcc(array('gerardo@matmor.unam.mx'))
                     ->setBody($this->renderView('mail/validada.txt.twig', array('solicitud' => $solicitud)));
 

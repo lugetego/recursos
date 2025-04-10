@@ -13,18 +13,21 @@
     <h3 class="mt-3 mb-3">Solicitudes de recursos </h3>
     <table id="example" class="mt-5 table table-striped" style="width:100%">
         <thead>
-            <tr>
-                <th>Fecha de solicitud</th>
-                <th>Solicitante</th>
-                <th>Inicio</th>
-                <th>Fin</th>
-                <th>Lugar</th>
-                <th>PE CCM</th>
-                <th>TA CCM</th>
-                <th>PE Proyecto</th>
-                <th>TA Proyecto</th>
-                <th>&nbsp;</th>
-            </tr>
+        <tr class="text-center">
+            <th>Fecha de solicitud</th>
+            <th>Solicitante</th>
+            <th>Inicio</th>
+            <th>Fin</th>
+            <th>Lugar</th>
+            <th>PE CCM</th>
+            <th>TA CCM</th>
+            <th>PE Proyecto</th>
+            <th>TA Proyecto</th>
+            <th>PE Ing. Ext</th>
+            <th>TA Ing. Ext</th>
+            <th>Validada</th>
+            <th>&nbsp;</th>
+        </tr>
         </thead>
         <tbody>
         {% for solicitud in solicituds %}
@@ -38,6 +41,15 @@
                 <td>{{ solicitud.taCCM }}</td>
                 <td>{{ solicitud.tcProyecto }}</td>
                 <td>{{ solicitud.taProyecto }}</td>
+                <td>{{ solicitud.tcIngresos }}</td>
+                <td>{{ solicitud.taIngresos }}</td>
+                <td class="text-center">
+                    {% if solicitud.validada %}
+                        <span class="badge bg-success">Sí</span>
+                    {% else %}
+                        <span class="badge bg-warning">No</span>
+                    {% endif %}
+                </td>
                 <td>
                     {% if is_granted('ROLE_ADMIN') %}
                         <a href="{{ path('app_solicitud_show', {'slug': solicitud.slug}) }}"><i class="fa fa-search"></i></a>
