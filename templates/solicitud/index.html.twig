@@ -84,8 +84,11 @@
         $('#example').DataTable(
             {
                 order: [[ 0, 'desc' ]],
-                pageLength: 25  // Set default rows per page to 20
+                pageLength: 25,  // Set default rows per page to 20
 
+                columnDefs: [
+                    { type: 'date', targets: 0 } // Asegura que la columna 0 se trata como fecha
+                ]
             }
         );
     } );
