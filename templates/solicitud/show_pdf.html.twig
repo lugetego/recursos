@@ -137,11 +137,18 @@
                     {% if solicitud.fuente not in ['CCM', 'Ingresos extraordinarios'] %}
                         <strong>Persona responsable del proyecto:</strong> {{ solicitud.responsable }}<br>
                     {% endif %}
-
                 </p>
-
+                <p class="card-text">
+                    <strong>Lugar:</strong> {{ solicitud.lugar }}
+                </p>
+                <p class="card-text">
+                    <strong>Institución:</strong> {{ solicitud.institucion }}<br>
+                </p>
                 <p class="card-text">
                     <strong>Motivo de la solicitud:</strong> {{ solicitud.motivo|join(', ') }}
+                </p>
+                <p class="card-text">
+                    <strong>Evento:</strong> {{ solicitud.evento }}
                 </p>
 
                 {% if solicitud.tituloActividad is not empty %}
@@ -150,6 +157,9 @@
                     </p>
                 {% endif %}
 
+                <p class="card-text">
+                    <strong>Anfitrión:</strong> {{ solicitud.anfitrion }}<br>
+                </p>
                 <p class="card-text">
                     <strong>Periodo de la solicitud</strong>
                 </p>
@@ -166,52 +176,44 @@
                     </small>
                 </h6>
 
-                <p class="card-text"><strong>Evento:</strong> {{ solicitud.evento }}</p>
-                <p class="card-text"><strong>Lugar:</strong> {{ solicitud.lugar }}</p>
-                <p class="card-text">
-                    <strong>Institución:</strong> {{ solicitud.institucion }}<br>
-                </p>
-                <p class="card-text">
-                    <strong>Anfitrión:</strong> {{ solicitud.anfitrion }}<br>
-                </p>
                 <p class="card-text"><strong>Recursos solicitados</strong></p>
 
                 <table class="table table-border w-50" cellspacing="0">
                     {% if solicitud.tcCCM != 0 %}
-                    <tr>
-                        <th scope="row">Prácticas escolares (CCM)</th>
-                        <td class="text-right">${{ solicitud.tcCCM|number_format(2) }}</td>
-                    </tr>
+                        <tr>
+                            <th scope="row">Prácticas escolares (CCM)</th>
+                            <td class="text-right">${{ solicitud.tcCCM|number_format(2) }}</td>
+                        </tr>
                     {% endif %}
                     {% if solicitud.tcProyecto != 0 %}
-                    <tr>
-                        <th scope="col">Prácticas escolares (Proyecto)</th>
-                        <td class="text-right">${{ solicitud.tcProyecto|number_format(2) }}</td>
-                    </tr>
+                        <tr>
+                            <th scope="col">Prácticas escolares (Proyecto)</th>
+                            <td class="text-right">${{ solicitud.tcProyecto|number_format(2) }}</td>
+                        </tr>
                     {% endif %}
                     {% if solicitud.tcIngresos != 0 %}
-                    <tr>
-                        <th scope="row">Prácticas escolares (Ingresos Ext.)</th>
-                        <td class="text-right">${{ solicitud.tcIngresos|number_format(2) }}</td>
-                    </tr>
+                        <tr>
+                            <th scope="row">Prácticas escolares (Ingresos Ext.)</th>
+                            <td class="text-right">${{ solicitud.tcIngresos|number_format(2) }}</td>
+                        </tr>
                     {% endif %}
                     {% if solicitud.taCCM != 0 %}
                         <tr>
-                        <th scope="row">Transporte aéreo (CCM)</th>
-                        <td class="text-right">${{ solicitud.taCCM|number_format(2) }}</td>
-                    </tr>
+                            <th scope="row">Transporte aéreo (CCM)</th>
+                            <td class="text-right">${{ solicitud.taCCM|number_format(2) }}</td>
+                        </tr>
                     {% endif %}
                     {% if solicitud.taProyecto != 0 %}
-                    <tr>
-                        <th scope="row">Transporte aéreo (Proyecto)</th>
-                        <td class="text-right">${{ solicitud.taProyecto|number_format(2) }}</td>
-                    </tr>
+                        <tr>
+                            <th scope="row">Transporte aéreo (Proyecto)</th>
+                            <td class="text-right">${{ solicitud.taProyecto|number_format(2) }}</td>
+                        </tr>
                     {% endif %}
                     {% if solicitud.taIngresos != 0 %}
-                    <tr>
-                        <th scope="row">Transporte aéreo (Ingresos Ext.)</th>
-                        <td class="text-right">${{ solicitud.taIngresos|number_format(2) }}</td>
-                    </tr>
+                        <tr>
+                            <th scope="row">Transporte aéreo (Ingresos Ext.)</th>
+                            <td class="text-right">${{ solicitud.taIngresos|number_format(2) }}</td>
+                        </tr>
                     {% endif %}
                     <tr class="bg-light">
                         <th scope="row">Total (MXP)</th>
