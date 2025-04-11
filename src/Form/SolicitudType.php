@@ -86,6 +86,7 @@ class SolicitudType extends AbstractType
                     'Curso'=> 'Curso',
                     'Feria'=> 'Feria',
                     'Jornada'=> 'Jornada',
+                    'Minicurso'=> 'Minicurso',
                     'Póster'=>'Póster',
                     'Seminario'=> 'Seminario',
                     'Taller'=> 'Taller',
@@ -99,7 +100,7 @@ class SolicitudType extends AbstractType
                 'label' => 'Título de la actividad', ]) // Optional: Add a label if you need one
             ->add('evento', TextType::class, [
                 'required' => true,  // Makes the field required
-                'label' => 'Nombre del evento (Si aplica)', ]) // Optional: Add a label if you need one
+                'label' => 'Nombre del evento', ]) // Optional: Add a label if you need one
             ->add('importe')
 
             ->add('tcCCM')
