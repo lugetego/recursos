@@ -52,6 +52,9 @@
                     <a class="btn btn-dark ms-2" id="printPageButton" href="{{ path('app_solicitud_pdf', {'id': solicitud.id}) }}" role="button">
                         <i class="fas fa-file-pdf"></i> Generar PDF
                     </a>
+                    <a class="btn btn-dark ms-2" id="printPageButton" href="{{ path('app_solicitud_recibo', {'id': solicitud.id}) }}" role="button">
+                        <i class="fas fa-receipt"></i> Recibo
+                    </a>
                 {% endif %}
             </div>
             <div class="card border-0">
@@ -217,4 +220,6 @@
         </div>
 
     </div>
+
 {% endblock %}
+

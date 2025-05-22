@@ -77,6 +77,57 @@ class SolicitudController extends AbstractController
     }
 
     /**
+     * @Route("/{id}/recibo", name="app_solicitud_recibo", methods={"GET"})
+     */
+    public function reciboAction(Solicitud $solicitud, SolicitudRepository $solicitudRepository, \Knp\Snappy\Pdf $knpSnappy, \Swift_Mailer $mailer)
+    {
+        $this->knpSnappy = $knpSnappy;
+
+        $textoImporte = $this->numeroATextoMX($solicitud->getImporte());
+
+
+        $html = $this->renderView('solicitud/recibo_pdf.html.twig', [
+            'solicitud' => $solicitud,
+            'textoImporte'=>$textoImporte,
+        ]);
+
+        $filename = sprintf('SolicitudRecursos-'.$solicitud->getFecha()->format('d/m/Y').'.pdf');
+        $knpSnappy->setOption('enable-local-file-access', true);
+
+        $pdfOptions = array(
+            'footer-right'     => ('Hoja [page] de [toPage]'),
+            'footer-font-size'=> 8,
+            'margin-top'    => 10,
+            'margin-right'  => 20,
+            'margin-bottom' => 10,
+            'margin-left'   => 20,
+        );
+
+        /* // Mail
+         $message = (new \Swift_Message('Solicitud de recursos - Prácticas escolares'))
+             ->setFrom('webmaster@matmor.unam.mx')
+             ->setTo('vorozco@matmor.unam.mx')
+             ->setBcc(array('gerardo@matmor.unam.mx'))
+             ->setBody($this->renderView('mail/nueva.txt.twig', array('solicitud' => $solicitud)));
+
+         $mailer->send($message);
+
+         $solicitud->setImpresa(true);
+         $solicitudRepository->add($solicitud, true);*/
+
+        return new Response(
+            $this->knpSnappy->getOutputFromHtml($html, $pdfOptions),
+            200,
+            [
+                'Content-Type'        => 'application/pdf',
+                'Content-Disposition' => sprintf('inline; filename="%s"', $filename),
+            ]
+
+        );
+    }
+
+
+    /**
      * @Route("/new", name="app_solicitud_new", methods={"GET", "POST"})
      */
     public function new(Request $request, SolicitudRepository $solicitudRepository, \Swift_Mailer $mailer): Response
@@ -210,5 +261,70 @@ class SolicitudController extends AbstractController
             'form' => $form,
         ]);
     }
+
+    // Function to convert number to text (Spanish MX)
+    private function numeroATextoMX(float $numero): string
+    {
+        $unidades = ["", "uno", "dos", "tres", "cuatro", "cinco", "seis", "siete", "ocho", "nueve"];
+        $decenas = ["", "diez", "veinte", "treinta", "cuarenta", "cincuenta", "sesenta", "setenta", "ochenta", "noventa"];
+        $diez_a_diecinueve = ["diez", "once", "doce", "trece", "catorce", "quince", "dieciséis", "diecisiete", "dieciocho", "diecinueve"];
+        $veinti = "veinti";
+        $centenas = ["", "ciento", "doscientos", "trescientos", "cuatrocientos", "quinientos", "seiscientos", "setecientos", "ochocientos", "novecientos"];
+
+        $convertirGrupo = function (int $n) use (&$unidades, &$decenas, &$diez_a_diecinueve, &$veinti, &$centenas) {
+            $output = "";
+
+            $c = (int)($n / 100);
+            $d = (int)(($n % 100) / 10);
+            $u = $n % 10;
+
+            if ($n === 100) return "cien";
+
+            if ($c > 0) $output .= $centenas[$c] . " ";
+
+            if ($d === 1) {
+                $output .= $diez_a_diecinueve[$u] . " ";
+            } elseif ($d === 2 && $u !== 0) {
+                $output .= $veinti . $unidades[$u] . " ";
+            } else {
+                if ($d > 0) $output .= $decenas[$d] . ($u > 0 ? " y " : " ");
+                if ($u > 0 || ($c === 0 && $d === 0)) $output .= $unidades[$u] . " ";
+            }
+
+            return trim($output);
+        };
+
+        $entero = floor($numero);
+        $decimales = round(($numero - $entero) * 100);
+
+        if ($entero === 0) {
+            $texto = "cero";
+        } else {
+            $millones = (int)($entero / 1000000);
+            $miles = (int)(($entero % 1000000) / 1000);
+            $cientos = (int)($entero % 1000);
+
+            $texto = "";
+
+            if ($millones === 1) {
+                $texto .= "un millón ";
+            } elseif ($millones > 1) {
+                $texto .= $convertirGrupo($millones) . " millones ";
+            }
+
+            if ($miles === 1) {
+                $texto .= "mil ";
+            } elseif ($miles > 1) {
+                $texto .= $convertirGrupo($miles) . " mil ";
+            }
+
+            if ($cientos > 0) {
+                $texto .= $convertirGrupo($cientos);
+            }
+        }
+
+        return trim($texto) . " pesos con " . str_pad($decimales, 2, "0", STR_PAD_LEFT) . "/100 M.N.";
+    }
+
 
 }
