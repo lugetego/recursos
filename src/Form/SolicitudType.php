@@ -28,7 +28,7 @@ class SolicitudType extends AbstractType
             ->add('fuente', ChoiceType::class, [
                 'choices'  => [
                     'CCM'=> 'CCM',
-                    'Conahcyt'=> 'Conahcyt',
+                    'SECIHTI'=> 'SECIHTI',
                     'Ingresos extraordinarios'=> 'Ingresos extraordinarios',
                     'PAPIIT'=> 'PAPIIT',
                     'PAPIME'=> 'PAPIME'
@@ -76,7 +76,16 @@ class SolicitudType extends AbstractType
                 'first_options'  => ['label' => 'Correo'],
                 'second_options' => ['label' => 'Confirma correo']])
 
-
+            ->add('programa', ChoiceType::class, [
+                'choices'  => [
+                    'Maestría'=>'Maestría',
+                    'Doctorado'=>'Doctorado',
+                    'Posdoc DGAPA'=> 'Posdoc DGAPA',
+                    'Posdoc SECIHTI'=> 'Posdoc SECIHTI',
+                ],
+                'placeholder' => 'Seleccionar',
+                'required'=> true,
+            ])
             ->add('tipoActividad', ChoiceType::class, [
                 'choices'  => [
                     'Asesoría'=>'Asesoría',

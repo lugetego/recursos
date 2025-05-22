@@ -15,8 +15,9 @@
 
     <div class="mt-2">
         <hr>
-        <p class="lead"><strong>Una vez capturada la información es necesario imprimir el formato y entregarlo a
-                la Secretaría Académica.</strong>
+        <p class="lead"><strong>Una vez que la información de la solicitud haya sido capturada y validada,
+                es necesario imprimir tanto la solicitud como el recibo y entregarlos a la Secretaría Académica.
+            </strong>
         </p>
     </div>
 
@@ -41,13 +42,22 @@
         </div>
     </div>
     <div class="row mt-2">
-        <div class="col-12">
+        <div class="col-8">
             <div class="form-floating">
                 {{ form_widget(form.solicitante, {'attr': {'class': 'form-control','placeholder':'Nombre del solicitante'}}) }}
                 {{ form_label(form.solicitante,'Persona solicitante') }}
             </div>
             <div class="invalid-error invalid-feedback">
                 {{ form_errors(form.solicitante) }}
+            </div>
+        </div>
+        <div class="col-4">
+            <div class="form-floating">
+                {{ form_widget(form.programa, {'attr': {'class': 'form-control','placeholder':'Programa académico'}}) }}
+                {{ form_label(form.programa,'Programa académico') }}
+            </div>
+            <div class="invalid-error invalid-feedback">
+                {{ form_errors(form.programa) }}
             </div>
         </div>
     </div>

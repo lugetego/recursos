@@ -192,6 +192,11 @@ class Solicitud
      */
     private $fuente;
 
+    /**
+     * @ORM\Column(type="string", length=255)
+     */
+    private $programa;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -623,6 +628,20 @@ class Solicitud
         $this->evento = $evento;
     }
 
+    /**
+     * @return mixed
+     */
+    public function getPrograma()
+    {
+        return $this->programa;
+    }
 
+    /**
+     * @param mixed $programa
+     */
+    public function setPrograma($programa): void
+    {
+        $this->programa = $programa;
+    }
 
 }
