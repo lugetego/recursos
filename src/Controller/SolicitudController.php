@@ -323,7 +323,7 @@ class SolicitudController extends AbstractController
             }
         }
 
-        return trim($texto) . " pesos " . str_pad($decimales, 2, "0", STR_PAD_LEFT) . "/100 M.N.";
+        return trim($texto) . " pesos " . str_pad($decimales, 2, "0", STR_PAD_LEFT);
     }
 
 

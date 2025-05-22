@@ -115,8 +115,8 @@
                 </p>
                 <p class="card-text" style="margin-top: 5rem;text-align: justify;line-height: 3;" >
                     R E C I B Í de la Tesorería de la Universidad Nacional Autónoma de México, por conducto de la Unidad Administrativa
-                    del Centro de Ciencias Matemáticas, la cantidad de <strong> ${{ solicitud.importe|number_format(2) }}
-                        ({{ textoImporte|capitalize }})</strong> por concepto de viaje a  <strong> {{ solicitud.lugar }}</strong>, que se llevará a cabo
+                    del Centro de Ciencias Matemáticas, la cantidad de  <strong>  ${{ solicitud.importe|number_format(2) }}
+                        ({{ textoImporte|capitalize }}/100 M.N.)</strong> por concepto de viaje a  <strong> {{ solicitud.lugar }}</strong>, que se llevará a cabo
                     <strong>del {{ solicitud.inicio|format_datetime('long', 'none', locale='es') }}
                         al {{ solicitud.fin|format_datetime('long', 'none', locale='es') }}</strong>.
                 </p>
@@ -146,7 +146,7 @@
             <div class="col-4 text-center">
                 {{ solicitud.tutor }}
                 <div class="border-bottom mb-1"></div>
-                <p class="text-muted small">Dr./Dra. Tutor(a) o Asesor(a) (Nombre y firma)</p>
+                <p class="text-muted small">Asesor(a) (Nombre y firma)</p>
             </div>
             <div class="col-4 text-center">
                 <br>
