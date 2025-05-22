@@ -1,6 +1,7 @@
 Nueva solicitud
 
 Solicitante: {{ solicitud.solicitante|title }}
+Programa académico: {{ solicitud.programa }}
 {% set difference = date(solicitud.fin|date('Y/m/d')).diff(date(solicitud.inicio|date('Y/m/d'))) %}
 {% set duracion = difference.days + 1 %}
 
