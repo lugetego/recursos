@@ -128,7 +128,7 @@
 
 
 
-                <h5 class="card-subtitle mt-4 mb-2 text-muted">{{ solicitud.solicitante }}, <em><small>{{ solicitud.mail}}</small></em> </h5>
+                <h5 class="card-subtitle mt-4 mb-2 text-muted">{{ solicitud.solicitante }}, {{ solicitud.programa}},<em><small>{{ solicitud.mail}}</small></em> </h5>
                 <h6 class="card-subtitle mb-2 text-muted">Fecha de la solicitud: {{ solicitud.fecha|format_datetime('long', 'none', locale='es') }}</h6>
 
                 <p class="card-text">
