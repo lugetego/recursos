@@ -17,6 +17,7 @@
             <th>Id</th>
             <th>Fecha de solicitud</th>
             <th>Solicitante</th>
+            <th>Prog. Acad.</th>
             <th>Inicio</th>
             <th>Fin</th>
             <th>Lugar</th>
@@ -42,6 +43,7 @@
                     {% endif %}
                 </td>
                 <td>{{ solicitud.solicitante }}</td>
+                <td>{{ solicitud.programa }}</td>
                 <td>{{ solicitud.inicio ? solicitud.inicio|format_datetime('long', 'none', locale='es') }}</td>
                 <td>{{ solicitud.fin ? solicitud.fin|format_datetime('long', 'none', locale='es') }}</td>
                 <td>{{ solicitud.lugar }}</td>
