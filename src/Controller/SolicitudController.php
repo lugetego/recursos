@@ -91,16 +91,16 @@ class SolicitudController extends AbstractController
             'textoImporte'=>$textoImporte,
         ]);
 
-        $filename = sprintf('SolicitudRecursos-'.$solicitud->getFecha()->format('d/m/Y').'.pdf');
+        $filename = sprintf('Recibo-'.$solicitud->getFecha()->format('d/m/Y').'.pdf');
         $knpSnappy->setOption('enable-local-file-access', true);
 
         $pdfOptions = array(
             'footer-right'     => ('Hoja [page] de [toPage]'),
             'footer-font-size'=> 8,
             'margin-top'    => 10,
-            'margin-right'  => 20,
+            'margin-right'  => 10,
             'margin-bottom' => 10,
-            'margin-left'   => 20,
+            'margin-left'   => 10,
         );
 
         /* // Mail
