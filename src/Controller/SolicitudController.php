@@ -98,9 +98,9 @@ class SolicitudController extends AbstractController
             'footer-right'     => ('Hoja [page] de [toPage]'),
             'footer-font-size'=> 8,
             'margin-top'    => 10,
-            'margin-right'  => 10,
+            'margin-right'  => 20,
             'margin-bottom' => 10,
-            'margin-left'   => 10,
+            'margin-left'   => 20,
         );
 
         /* // Mail
