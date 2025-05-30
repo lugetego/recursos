@@ -49,10 +49,10 @@
                     <a class="btn btn-dark me-2" id="editButton" href="{{ path('app_solicitud_edit', {'slug': solicitud.slug}) }}" role="button">
                         <i class="fas fa-edit"></i> Modificar
                     </a>
-                    <a class="btn btn-dark ms-2" id="printPageButton" href="{{ path('app_solicitud_pdf', {'id': solicitud.id}) }}" role="button">
+                    <a class="btn btn-dark ms-2" id="printPageButton" href="{{ path('app_solicitud_pdf', {'slug': solicitud.slug}) }}" role="button">
                         <i class="fas fa-file-pdf"></i> Generar PDF
                     </a>
-                    <a class="btn btn-dark ms-2" id="printPageButton" href="{{ path('app_solicitud_recibo', {'id': solicitud.id}) }}" role="button">
+                    <a class="btn btn-dark ms-2" id="printPageButton" href="{{ path('app_solicitud_recibo', {'slug': solicitud.slug}) }}" role="button">
                         <i class="fas fa-receipt"></i> Recibo
                     </a>
                 {% endif %}

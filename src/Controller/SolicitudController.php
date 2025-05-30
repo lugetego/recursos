@@ -31,7 +31,7 @@ class SolicitudController extends AbstractController
     }
 
     /**
-     * @Route("/{id}/pdf", name="app_solicitud_pdf", methods={"GET"})
+     * @Route("/{slug}/pdf", name="app_solicitud_pdf", methods={"GET"})
      */
     public function pdfAction(Solicitud $solicitud, SolicitudRepository $solicitudRepository, \Knp\Snappy\Pdf $knpSnappy, \Swift_Mailer $mailer)
     {
@@ -77,7 +77,7 @@ class SolicitudController extends AbstractController
     }
 
     /**
-     * @Route("/{id}/recibo", name="app_solicitud_recibo", methods={"GET"})
+     * @Route("/{slug}/recibo", name="app_solicitud_recibo", methods={"GET"})
      */
     public function reciboAction(Solicitud $solicitud, SolicitudRepository $solicitudRepository, \Knp\Snappy\Pdf $knpSnappy, \Swift_Mailer $mailer)
     {
