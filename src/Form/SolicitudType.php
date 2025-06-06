@@ -97,6 +97,7 @@ class SolicitudType extends AbstractType
                     'Jornada'=> 'Jornada',
                     'Minicurso'=> 'Minicurso',
                     'Plática'=> 'Plática',
+                    'Ponencia'=>'Ponencia',
                     'Póster'=>'Póster',
                     'Seminario'=> 'Seminario',
                     'Taller'=> 'Taller',
