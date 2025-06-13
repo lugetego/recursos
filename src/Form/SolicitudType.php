@@ -78,6 +78,7 @@ class SolicitudType extends AbstractType
 
             ->add('programa', ChoiceType::class, [
                 'choices'  => [
+                    'Licenciatura'=> 'Licenciatura',
                     'Maestría'=>'Maestría',
                     'Doctorado'=>'Doctorado',
                     'Posdoc DGAPA'=> 'Posdoc DGAPA',
