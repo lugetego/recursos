@@ -218,6 +218,17 @@
                 </div>
             </div>
         </div>
+        {% if solicitud.responsable != "" and solicitud.tutor != solicitud.responsable %}
+        <div class="row pt-5">
+            <div class="col-4">
+                {{ solicitud.responsable }}
+                <div class="text-center">
+                    <div class="border-bottom pb-2 mb-1" style="height: 2px;"></div>
+                    <p class="text-muted small">Persona responsable del proyecto</p>
+                </div>
+            </div>
+        </div>
+        {% endif %}
 
     </div>
 
