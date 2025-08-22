@@ -29,6 +29,12 @@ security:
                 path: logout
                 target: login
 
+            remember_me:
+                secret: '%kernel.secret%' # required
+                lifetime: 604800 # 1 week in seconds
+                always_remember_me: true
+
+
             #provider: users_in_memory
 
             # activate different ways to authenticate
