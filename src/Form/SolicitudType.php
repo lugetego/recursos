@@ -28,10 +28,10 @@ class SolicitudType extends AbstractType
             ->add('fuente', ChoiceType::class, [
                 'choices'  => [
                     'CCM'=> 'CCM',
-                    'SECIHTI'=> 'SECIHTI',
                     'Ingresos extraordinarios'=> 'Ingresos extraordinarios',
                     'PAPIIT'=> 'PAPIIT',
-                    'PAPIME'=> 'PAPIME'
+                    'PAPIME'=> 'PAPIME',
+                    'SECIHTI'=> 'SECIHTI'
                 ],
                 'placeholder' => 'Seleccionar',
             ])
