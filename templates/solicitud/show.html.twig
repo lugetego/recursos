@@ -167,6 +167,24 @@
                                 <td class="text-right">${{ solicitud.taIngresos|number_format(2)}}</td>
                             </tr>
                             {% endif %}
+                            {% if solicitud.insCCM != 0 %}
+                                <tr>
+                                    <th scope="row">Inscripciones (CCM)</th>
+                                    <td class="text-right">${{ solicitud.insCCM|number_format(2)}}</td>
+                                </tr>
+                            {% endif %}
+                            {% if solicitud.insProyecto != 0 %}
+                                <tr>
+                                    <th scope="row">Inscripciones (Proyecto)</th>
+                                    <td class="text-right">${{ solicitud.insProyecto|number_format(2)}}</td>
+                                </tr>
+                            {% endif %}
+                            {% if solicitud.insIngresos != 0 %}
+                                <tr>
+                                    <th scope="row">Inscripciones (Ingresos Ext.)</th>
+                                    <td class="text-right">${{ solicitud.insIngresos|number_format(2)}}</td>
+                                </tr>
+                            {% endif %}
 
                             <tr class="bg-light">
                                 <th scope="row">Total (MXP)</th>

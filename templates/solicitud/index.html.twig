@@ -23,10 +23,13 @@
             <th>Lugar</th>
             <th>PE CCM</th>
             <th>TA CCM</th>
+            <th>Ins CCM</th>
             <th>PE Proyecto</th>
             <th>TA Proyecto</th>
-            <th>PE Ing. Ext</th>
-            <th>TA Ing. Ext</th>
+            <th>Ins Proyecto</th>
+            <th>PE Ing Ext</th>
+            <th>TA Ing Ext</th>
+            <th>Ins Ing Ext CCM</th>
             <th>Validada</th>
             <th>&nbsp;</th>
         </tr>
@@ -49,10 +52,13 @@
                 <td>{{ solicitud.lugar }}</td>
                 <td>{{ solicitud.tcCCM }}</td>
                 <td>{{ solicitud.taCCM }}</td>
+                <td>{{ solicitud.insCCM }}</td>
                 <td>{{ solicitud.tcProyecto }}</td>
                 <td>{{ solicitud.taProyecto }}</td>
+                <td>{{ solicitud.insProyecto }}</td>
                 <td>{{ solicitud.tcIngresos }}</td>
                 <td>{{ solicitud.taIngresos }}</td>
+                <td>{{ solicitud.insIngresos }}</td>
                 <td class="text-center">
                     {% if solicitud.validada %}
                         <span class="badge bg-success">Sí</span>

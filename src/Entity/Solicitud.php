@@ -156,6 +156,14 @@ class Solicitud
      *     type="float",
      *     message="The value {{ value }} is not a valid {{ type }}.")
      */
+    private $insCCM;
+
+    /**
+     * @ORM\Column(type="float", nullable=true)
+     * @Assert\Type(
+     *     type="float",
+     *     message="The value {{ value }} is not a valid {{ type }}.")
+     */
     private $taProyecto;
 
     /**
@@ -180,7 +188,23 @@ class Solicitud
      *     type="float",
      *     message="The value {{ value }} is not a valid {{ type }}.")
      */
+    private $insIngresos;
+
+    /**
+     * @ORM\Column(type="float", nullable=true)
+     * @Assert\Type(
+     *     type="float",
+     *     message="The value {{ value }} is not a valid {{ type }}.")
+     */
     private $tcProyecto;
+
+    /**
+     * @ORM\Column(type="float", nullable=true)
+     * @Assert\Type(
+     *     type="float",
+     *     message="The value {{ value }} is not a valid {{ type }}.")
+     */
+    private $insProyecto;
 
     /**
      * @ORM\Column(type="text", length=6000, nullable=true)
@@ -611,6 +635,55 @@ class Solicitud
     {
         $this->taIngresos = $taIngresos;
     }
+
+    /**
+     * @return mixed
+     */
+    public function getInsCCM()
+    {
+        return $this->insCCM;
+    }
+
+    /**
+     * @param mixed $insCCM
+     */
+    public function setInsCCM($insCCM): void
+    {
+        $this->insCCM = $insCCM;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getInsIngresos()
+    {
+        return $this->insIngresos;
+    }
+
+    /**
+     * @param mixed $insIngresos
+     */
+    public function setInsIngresos($insIngresos): void
+    {
+        $this->insIngresos = $insIngresos;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getInsProyecto()
+    {
+        return $this->insProyecto;
+    }
+
+    /**
+     * @param mixed $insProyecto
+     */
+    public function setInsProyecto($insProyecto): void
+    {
+        $this->insProyecto = $insProyecto;
+    }
+
 
     /**
      * @return mixed

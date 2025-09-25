@@ -5,6 +5,11 @@ let taProyecto = document.getElementById('solicitud_taProyecto');
 let taCCM = document.getElementById('solicitud_taCCM');
 let taIngresos = document.getElementById('solicitud_taIngresos');
 
+let insProyecto = document.getElementById('solicitud_insProyecto');
+let insCCM = document.getElementById('solicitud_insCCM');
+let insIngresos = document.getElementById('solicitud_insIngresos');
+
+
 let importe = document.getElementById('solicitud_importe');
 
 
@@ -14,10 +19,16 @@ importe.readOnly = true;
 importe.value = importe.value || 0;
 tcProyecto.value = tcProyecto.value || 0;
 tcCCM.value = tcCCM.value || 0;
+insCCM.value = insCCM.value || 0;
 taProyecto.value = taProyecto.value || 0;
 taCCM.value = taCCM.value || 0;
+insProyecto.value = insProyecto.value || 0;
 taIngresos.value = taIngresos.value || 0;
 tcIngresos.value = tcIngresos.value || 0;
+insIngresos.value = insIngresos.value || 0;
+
+
+
 document.addEventListener(
     "change",
     () => {
@@ -31,7 +42,10 @@ document.addEventListener(
             parseToNumber(taProyecto.value) +
             parseToNumber(taCCM.value) +
             parseToNumber(tcIngresos.value) +
-            parseToNumber(taIngresos.value);
+            parseToNumber(taIngresos.value) +
+            parseToNumber(insIngresos.value) +
+            parseToNumber(insCCM.value) +
+            parseToNumber(insProyecto.value) ;
 
         importe.value = sum;
 
